@@ -10,9 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      //Creating an association will add a foreign key constraint to the attributes. All associations use CASCADE on update and SET NULL on delete, except for n:m, which also uses CASCADE on delete.
-      RecipeIngredients.belongsTo(models.Recipe, { foreignKey: 'recipeId', onDelete: 'CASCADE', onUpdate: 'CASCADE', hooks: true  })
-      RecipeIngredients.belongsTo(models.Ingredient, { foreignKey: 'ingredientId', onDelete: 'CASCADE', onUpdate: 'CASCADE', hooks: true  })
+      // RecipeIngredients.belongsToMany(models.Recipe, { foreignKey: 'recipeId', onDelete: 'CASCADE', onUpdate: 'CASCADE', hooks: true })
+      // RecipeIngredients.belongsToMany(models.Ingredient, { foreignKey: 'ingredientId', onDelete: 'CASCADE', onUpdate: 'CASCADE', hooks: true  })
     }
   };
   RecipeIngredients.init({

@@ -11,11 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Recipe.belongsTo(models.User, { foreignKey: 'userId'})
+      Recipe.belongsToMany(models.Ingredient, { through: models.RecipeIngredients, otherKey: 'ingredientId', foreignKey: 'recipeId'})
     }
   };
   Recipe.init({
     name: DataTypes.STRING,
-    imgurl: DataTypes.STRING,
+    imgUrl: DataTypes.STRING,
     desc: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {

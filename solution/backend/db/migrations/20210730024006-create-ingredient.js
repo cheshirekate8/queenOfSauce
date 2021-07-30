@@ -11,7 +11,7 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      imgurl: {
+      imgUrl: {
         type: Sequelize.STRING
       },
       desc: {
