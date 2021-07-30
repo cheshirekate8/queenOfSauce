@@ -1,6 +1,41 @@
 /* TODO Add site wide styles */
 
+@font-face {
+  font-family: "SVThin";
+  src: url("../src/media/fonts/svthin.ttf");
+}
+@font-face {
+  font-family: "SVBold";
+  src: url("../src/media/fonts/svbold.ttf");
+}
+@font-face {
+  font-family: "SVTitle";
+  src: url("../src/media/fonts/svtitle.ttf");
+}
+@font-face {
+  font-family: "SVAllCaps";
+  src: url("../src/media/fonts/svallcaps.ttf");
+}
+
 body {
-    background: url('../src/media/background.png') no-repeat center center fixed;
-    background-size: cover;
+  background: url("../src/media/background.png") no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  /* Credit: https://css-tricks.com/perfect-full-page-background-image/  */
+  position: relative;
+  box-sizing: border-box;
+  color: white;
+  font-family: 'SVThin';
+  text-shadow: black 1px 1px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'SVBold';
+}
+
+svg {
+  height: 2rem;
+  width: 2rem;
 }
