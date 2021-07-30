@@ -1,6 +1,6 @@
 'use strict';
 const {
-  Model, ForeignKeyConstraintError
+  Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class FridgeIngredients extends Model {
@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      FridgeIngredients.hasOne(models.Fridge, { foreignKey: 'fridgeId' }),
-      FridgeIngredients.hasOne(models.Ingredient, { foreignKey: 'ingredientId' })
+      FridgeIngredients.belongsTo(models.Fridge, { foreignKey: 'fridgeId' })
+      FridgeIngredients.belongsTo(models.Ingredient, { foreignKey: 'ingredientId' })
     }
   };
   FridgeIngredients.init({
