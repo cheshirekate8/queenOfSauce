@@ -17,6 +17,10 @@ module.exports = {
       desc: {
         type: Sequelize.STRING
       },
+      userId: {
+        type: Sequelize.INTEGER,
+        references: { model: 'Users' }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

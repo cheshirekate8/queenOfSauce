@@ -41,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       // User.belongsToMany(models.Recipe, { through: UserRecipe }),
       // User.belongsToMany(models.Ingredient, { through: UserIngredient })
       User.hasMany(models.Fridge)
+      User.hasMany(models.Recipe)
     }
   };
   User.init(
