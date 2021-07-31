@@ -1,5 +1,13 @@
 .profile-dropdown {
   position: absolute;
+  right: 0;
+  top: 35px;
+  font-family: 'SVThin';
+  font-size: 20px;
+  background-color: rgba(0,0,0,.2);
+  margin: 10px 0 0 0;
+  padding: 15px;
+  border-radius: 10%;
 }
 
 nav {
