@@ -1,0 +1,11 @@
+#splashDiv {
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.splashTitle {
+    margin: 5px;
+}

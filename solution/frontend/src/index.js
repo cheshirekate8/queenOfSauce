@@ -1,4 +1,5 @@
 import React from 'react';
+import { IconContext } from "react-icons";
 
 import './index.css';
 
@@ -31,12 +32,12 @@ if (process.env.NODE_ENV !== "production") {
 function Root() {
   return (
     <ModalProvider>
-      <Provider store={store}>
-        <BrowserRouter>
-          <App />
-          {/* <Carrot /> */}
-        </BrowserRouter>
-      </Provider>
+        <Provider store={store}>
+          <BrowserRouter>
+            <App />
+            {/* <Carrot /> */}
+          </BrowserRouter>
+        </Provider>
     </ModalProvider>
   );
 }

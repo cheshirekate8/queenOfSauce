@@ -11,11 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Fridge.belongsTo(models.User, { foreignKey: 'userId'})
-      Fridge.belongsToMany(models.Ingredient, { through: models.FridgeIngredients, otherKey: 'ingredientId', foreignKey: 'fridgeId' })
+      Fridge.belongsToMany(models.Ingredient, {
+        through: models.FridgeIngredients,
+        otherKey: 'ingredientId',
+        foreignKey: 'fridgeId'})
     }
   };
   Fridge.init({
-    userId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
+    name: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Fridge',

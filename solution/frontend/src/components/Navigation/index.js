@@ -4,8 +4,9 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
+import { GiFarmTractor } from 'react-icons/gi';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
@@ -15,20 +16,20 @@ function Navigation({ isLoaded }){
     );
   } else {
     sessionLinks = (
-      <>
-        <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
-      </>
+      <div>
+        <NavLink to="/login" className='navLinks'>Login</NavLink>
+        <NavLink to="/signup" className='navLinks'>Sign Up</NavLink>
+      </div>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <nav>
+      <NavLink exact to="/" className='navLinks'>
+        <GiFarmTractor />
+      </NavLink>
+      {isLoaded && sessionLinks}
+    </nav>
   );
 }
 
