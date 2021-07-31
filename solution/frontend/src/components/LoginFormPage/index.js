@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -16,6 +16,18 @@ function LoginFormPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
+    return dispatch(sessionActions.login({ credential, password }))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
+  };
+
+  const handleDemo = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    setCredential('demo@user.io');
+    setPassword('password');
     return dispatch(sessionActions.login({ credential, password }))
       .catch(async (res) => {
         const data = await res.json();
@@ -50,7 +62,11 @@ function LoginFormPage() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button type="submit" className='logBtns'>Log In</button>
+      </form>
+      <Link to='/signup' className='logLinks'>Need an account?</Link>
+      <form onSubmit={handleDemo}>
+        <button type="submit" id='demoBtn'>Login with Demo</button>
       </form>
     </div>
   );
