@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormPage';
 import LoginFormPage from "./components/LoginFormPage";
 import Splash from './components/Splash';
@@ -17,6 +17,8 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
+  const sessionUser = useSelector(state => state.session.user);
 
   return (
     <>
@@ -36,7 +38,12 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path="/" exact >
+            {sessionUser ? <Redirect to='/kitchen'/> : null}
             <Splash />
+          </Route>
+          <Route path="/kitchen">
+            {!sessionUser ? <Redirect to='/'/> : null}
+            <h1>Kitchen</h1>
           </Route>
           <Route path="/login" >
             <LoginFormPage />
