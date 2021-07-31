@@ -20,5 +20,8 @@
 
 #modal-content {
   position: absolute;
-  background-color:white;
+  background: linear-gradient(180deg, rgba(74,244,255,1) 15%, rgba(74,183,255,1) 50%, rgba(74,132,255,1) 85%);
+  border-radius: 40px;
+  border: #AD0050 solid 2px;
+  padding: 20px;
 }

@@ -18,7 +18,7 @@
 }
 
 body {
-  background: url("../src/media/background.png") no-repeat center center fixed;
+  background: url("../src/media/images/background.png") no-repeat center center fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -29,6 +29,7 @@ body {
   color: white;
   font-family: 'SVThin';
   text-shadow: black 1px 1px;
+  height: 98vh;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -41,7 +42,17 @@ svg {
   width: 2rem;
 }
 
+i {
+  font-size: 2rem;
+  padding: 15px 15px 0 15px
+}
+
 li {
   list-style: none;
   padding: 2px;
+}
+
+#aboutMeImg {
+  position: absolute;
+  bottom: 0;
 }

@@ -7,6 +7,9 @@ import Splash from './components/Splash';
 import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
 import { Modal } from './context/Modal';
+import SVme from './media/images/pnMe.png'
+
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,12 +21,18 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {/* <button onClick={() => setShowModal(true)}>Modal</button>
+      <img src={SVme} onClick={() => setShowModal(true)} id='aboutMeImg'/>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <h1>Hello I am a Modal</h1>
+          <h2>Project By:</h2>
+          <h1>Kathleen Young</h1>
+          {/* <i class="fab fa-github"></i>
+          <i class="fab fa-linkedin-in"></i>
+          <i class="fab fa-angellist"></i>
+          <i class="fas fa-file"></i> */}
+
         </Modal>
-      )} */}
+      )}
       {isLoaded && (
         <Switch>
           <Route path="/" exact >
