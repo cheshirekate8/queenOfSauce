@@ -1,0 +1,19 @@
+#loginDiv {
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginLabels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}

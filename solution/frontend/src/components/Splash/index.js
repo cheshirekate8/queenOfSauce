@@ -9,7 +9,7 @@ function Splash() {
             <h2 className='splashTitle'>Welcome to the</h2>
             <h1 className='splashTitle'>Queen of Sauce!</h1>
             <img src={qosgif} />
-            <p>Keep track of</p>
+            <p>Keep track of all your Stardew Valley ingredients and recipes, and even make your own!</p>
         </div>
     );
 }
