@@ -29,6 +29,21 @@ router.get(
     })
 )
 
+// Get all of a users fridges and all their ingredients
+router.get(
+    '/user/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        const userId = parseInt(req.params.id, 10);
+        const user = await User.findByPk(userId, {
+            include: {
+                model: Fridge,
+                include: Ingredient
+            }
+        });
+        return res.json(user.Fridges)
+    })
+)
+
 router.patch(
     '/:id(\\d+)',
     asyncHandler(async (req, res) => {
