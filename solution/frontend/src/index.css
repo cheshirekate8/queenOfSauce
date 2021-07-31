@@ -29,7 +29,8 @@ body {
   color: white;
   font-family: 'SVThin';
   text-shadow: black 1px 1px;
-  height: 98vh;
+  height: 100vh;
+  margin: 0;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -54,5 +55,6 @@ li {
 
 #aboutMeImg {
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
+  height: 75px;
 }

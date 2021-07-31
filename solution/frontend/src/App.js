@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormPage';
 import LoginFormPage from "./components/LoginFormPage";
-import Splash from './components/Splash';
-import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
+import Splash from './components/Splash';
+import KitchenComponent from './components/KitchenComponent';
+import * as sessionActions from './store/session';
 import { Modal } from './context/Modal';
 import SVme from './media/images/pnMe.png'
 
@@ -43,7 +44,7 @@ function App() {
           </Route>
           <Route path="/kitchen">
             {!sessionUser ? <Redirect to='/'/> : null}
-            <h1>Kitchen</h1>
+            <KitchenComponent />
           </Route>
           <Route path="/login" >
             <LoginFormPage />
