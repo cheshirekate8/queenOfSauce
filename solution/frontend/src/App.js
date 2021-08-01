@@ -21,16 +21,6 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  const sessionUser = useSelector(state => state.session.user);
-
-  // const sessionUserId = useSelector(state => state.session?.user?.id);
-
-  // useEffect(() => {
-  //   dispatch(kitchenActions.getFridges(sessionUserId))
-  // }, [dispatch, sessionUserId])
-
-  // console.log(sessionUser?.id)
-
   return (
     <>
       <Navigation isLoaded={isLoaded} />
