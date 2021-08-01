@@ -23,7 +23,7 @@ function KitchenComponent() {
         <div id='kitchenDiv'>
             <h1 className='kitchenTitle'>{sessionUser.username}'s Kitchen</h1>
             {fridges && fridges.map((fridge, i) => (
-                <div>
+                <div className='fridgeDiv'>
                     <li>{fridge.name}</li>
                     {/* <img src={fridges[0].Ingredients[0].imgUrl} /> */}
                     {ingredients[i].map(ingredient => (
