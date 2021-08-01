@@ -7,6 +7,7 @@ import Navigation from './components/Navigation';
 import Splash from './components/Splash';
 import KitchenComponent from './components/KitchenComponent';
 import * as sessionActions from './store/session';
+import * as kitchenActions from './store/kitchen'
 import { Modal } from './context/Modal';
 import SVme from './media/images/pnMe.png'
 
@@ -15,11 +16,20 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   const sessionUser = useSelector(state => state.session.user);
+
+  // const sessionUserId = useSelector(state => state.session?.user?.id);
+
+  // useEffect(() => {
+  //   dispatch(kitchenActions.getFridges(sessionUserId))
+  // }, [dispatch, sessionUserId])
+
+  // console.log(sessionUser?.id)
 
   return (
     <>
@@ -39,11 +49,9 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path="/" exact >
-            {sessionUser ? <Redirect to='/kitchen'/> : null}
             <Splash />
           </Route>
           <Route path="/kitchen">
-            {!sessionUser ? <Redirect to='/'/> : null}
             <KitchenComponent />
           </Route>
           <Route path="/login" >

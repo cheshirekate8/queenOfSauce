@@ -1,4 +1,5 @@
 import { csrfFetch } from "./csrf.js";
+import * as kitchenActions from './kitchen'
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
@@ -19,6 +20,7 @@ export const login = ({ credential, password }) => async dispatch => {
   });
   const data = await response.json();
   dispatch(setUser(data.user));
+  dispatch(kitchenActions.getFridges(data.user.id))
   return response;
 };
 
@@ -26,6 +28,7 @@ export const restoreUser = () => async dispatch => {
   const response = await csrfFetch("/api/session");
   const data = await response.json();
   dispatch(setUser(data.user));
+  dispatch(kitchenActions.getFridges(data.user.id));
   return response;
 };
 
@@ -49,6 +52,7 @@ export const logout = () => async (dispatch) => {
     method: "DELETE",
   });
   dispatch(removeUser());
+  dispatch(kitchenActions.clearFridges())
   return response;
 };
 
