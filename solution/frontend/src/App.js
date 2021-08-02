@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormPage';
 import LoginFormPage from "./components/LoginFormPage";
 import Navigation from './components/Navigation';
@@ -10,6 +10,7 @@ import * as sessionActions from './store/session';
 import * as kitchenActions from './store/kitchen'
 import { Modal } from './context/Modal';
 import SVme from './media/images/pnMe.png'
+import { ExternalLink } from 'react-external-link';
 
 
 function App() {
@@ -24,15 +25,23 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <img src={SVme} onClick={() => setShowModal(true)} id='aboutMeImg'/>
+      <img src={SVme} onClick={() => setShowModal(true)} id='aboutMeImg' />
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <h2>Project By:</h2>
           <h1>Kathleen Young</h1>
-          {/* <i class="fab fa-github"></i>
-          <i class="fab fa-linkedin-in"></i>
-          <i class="fab fa-angellist"></i>
-          <i class="fas fa-file"></i> */}
+          <div id='aboutMeLinks'>
+            <ExternalLink href='https://github.com/cheshirekate8/'>
+              <i class="fab fa-github"></i>
+            </ExternalLink>
+            <ExternalLink href='www.linkedin.com/in/dev-kathleen-young'>
+              <i class="fab fa-linkedin-in"></i>
+            </ExternalLink>
+            <ExternalLink href='https://angel.co/u/kathleen-young-3'>
+              <i class="fab fa-angellist"></i>
+            </ExternalLink>
+            {/* <i class="fas fa-file"></i> */}
+          </div>
 
         </Modal>
       )}
