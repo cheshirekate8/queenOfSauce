@@ -11,6 +11,7 @@ import * as kitchenActions from './store/kitchen'
 import { Modal } from './context/Modal';
 import SVme from './media/images/pnMe.png'
 import { ExternalLink } from 'react-external-link';
+import LinksComponent from './components/LinksComponent';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <LinksComponent />
       <img src={SVme} onClick={() => setShowModal(true)} id='aboutMeImg' />
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
@@ -53,11 +55,20 @@ function App() {
           <Route path="/kitchen">
             <KitchenComponent />
           </Route>
+          <Route path="/recipes">
+            <h1>Recipes</h1>
+          </Route>
+          <Route path="/ingredients">
+            <h1>Ingredients</h1>
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path='/signup'>
             <SignupFormPage />
+          </Route>
+          <Route path='*'>
+            <h1>404 Bud.</h1>
           </Route>
         </Switch>
       )}

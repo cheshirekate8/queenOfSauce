@@ -38,7 +38,7 @@ function EditFridgeForm({currFridge}) {
             required
           />
         </label>
-        <button type="submit">Create Edit Fridge</button>
+        <button type="submit">Edit Fridge</button>
       </form>
     </>
   );

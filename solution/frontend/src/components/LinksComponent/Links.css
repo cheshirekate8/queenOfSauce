@@ -1,0 +1,16 @@
+.subNavLinks {
+    font-family: 'SVThin';
+    color: white;
+    text-decoration: none;
+    padding: 0px 10px;
+    text-shadow: black 1px 1px;
+}
+
+.subNavLinks.active {
+    text-decoration: underline;
+}
+
+#subNavDiv {
+    display: flex;
+    justify-content: center;
+}
