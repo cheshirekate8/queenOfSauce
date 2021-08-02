@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
-import * as kitchenActions from "../../store/kitchen";
-import * as recipeActions from "../../store/cookbook"
+import { Redirect } from "react-router-dom";
 import * as ingredientActions from "../../store/pantry"
 import './Ingredients.css'
 
@@ -27,7 +25,7 @@ function IngredientsComponent() {
                 {ingredients && ingredients.map((ingredient) => (
                     <div id={`${ingredient.name}Div`} className="ingredientDiv">
                         <h5>{ingredient.name}</h5>
-                        <img src={ingredient.imgUrl} alt={`Image of ${ingredient.name}`} />
+                        <img src={ingredient.imgUrl} alt={`${ingredient.name}`} />
                     </div>
                 ))}
             </div>

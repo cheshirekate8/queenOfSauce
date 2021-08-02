@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
-import * as kitchenActions from "../../store/kitchen";
-import * as recipeActions from "../../store/cookbook"
-import * as ingredientActions from "../../store/pantry"
-import './Recipes.css'
+import { Redirect } from "react-router-dom";
+import * as recipeActions from "../../store/cookbook";
+import './Recipes.css';
 
 function RecipesComponent() {
     const dispatch = useDispatch()
@@ -34,7 +32,7 @@ function RecipesComponent() {
                         {recipes && recipes.map((recipe, i) => (
                             <div id={`${recipe.name}Div`} className="recipeDiv">
                                 <h5>{recipe.name}</h5>
-                                <img src={recipe.imgUrl} alt={`Image of ${recipe.name}`} />
+                                <img src={recipe.imgUrl} alt={recipe.name} />
                                 <ol>Ingredients
                                     {ingredients && ingredients[i].map((ingredient, j) => (
                                         <h6>{ingredient.name}</h6>

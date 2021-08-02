@@ -80,7 +80,7 @@ export const editFridge = (fridgeId, name) => async (dispatch) => {
     })
     const data = await response.json();
     console.log(data)
-    dispatch(editFridge());
+    dispatch(editRef());
     const response2 = await csrfFetch(`/api/fridges/user/${data.userId}`)
     if (response2.ok) {
         const fridges = await response2.json();

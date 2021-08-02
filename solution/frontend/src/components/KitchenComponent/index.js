@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import './Kitchen.css';
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import NewFridgeModal from "../NewFridgeModal";
 import EditFridgeModal from "../EditFridgeModal";
 import * as kitchenActions from "../../store/kitchen";
@@ -19,7 +19,7 @@ function KitchenComponent() {
         dispatch(recipeActions.getRecipes())
         dispatch(ingredientActions.getIngredients())
         dispatch(kitchenActions.getFridges(sessionUser?.id))
-    }, [dispatch]);
+    }, [dispatch, sessionUser?.id]);
 
     if (!sessionUser) return <Redirect to="/" />;
 
@@ -30,43 +30,19 @@ function KitchenComponent() {
         })
     }
 
-    // const handleSubmit = () => console.log('success')
-
-    // const editFridgeName = (fridge) => {
-    //     let thing = document.getElementById(fridge.name)
-    //     const editFridgeForm = (
-    //         <form onSubmit={handleSubmit}>
-    //             <input
-    //                 type="text"
-    //                 value={fridge.name}
-    //                 required
-    //             />
-    //             <button type="submit">
-    //                 <i class="fas fa-check fridgeBtns"></i>
-    //             </button>
-    //         </form>)
-
-    //     console.log(editFridgeForm)
-    //     // thing.innerHTML = `${editFridgeForm}`
-
-    //     console.log('THING ', thing)
-    //     console.log('FRIDGE ', fridge)
-    // }
-
-
     return (
         <div id='kitchenDiv'>
             <h1 className='kitchenTitle'>{sessionUser.username}'s Kitchen
                 <NewFridgeModal />
             </h1>
             {fridges && fridges.map((fridge, i) => (
-                <div className='fridgeDiv'>
+                <div className='fridgeDiv' key={`${fridge.name}key`}>
                     <div className='fridgeTitle' id={fridge.name}>
                         {fridge.name}
                         <div>
                             <EditFridgeModal currFridge={fridge}/>
                             <i
-                                class="fas fa-trash-alt fridgeBtns"
+                                className="fas fa-trash-alt fridgeBtns"
                                 onClick={() => dispatch(kitchenActions.deleteFridge(fridge.id))}
                             >
                             </i>
@@ -74,7 +50,7 @@ function KitchenComponent() {
                     </div>
                     {ingredients[i].map(ingredient => (
                         <>
-                            <img src={ingredient.imgUrl} />
+                            <img src={ingredient.imgUrl} alt={ingredient.name}  key={`${ingredient.name}key`}/>
                         </>
                     ))}
                 </div>

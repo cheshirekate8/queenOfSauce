@@ -12,12 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Ingredient.belongsToMany(models.Fridge, { through: models.FridgeIngredients, otherKey: 'fridgeId', foreignKey: 'ingredientId'})
       Ingredient.belongsToMany(models.Recipe, { through: models.RecipeIngredients, otherKey: 'recipeId', foreignKey: 'ingredientId'})
+      Ingredient.belongsTo(models.User, { foreignKey: 'userId'})
     }
   };
   Ingredient.init({
     name: DataTypes.STRING,
     imgUrl: DataTypes.STRING,
-    desc: DataTypes.STRING
+    desc: DataTypes.STRING,
+    userId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Ingredient',

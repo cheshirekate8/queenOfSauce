@@ -12,7 +12,7 @@ function NewFridgeModal() {
         onClick={() => setShowModal(true)}
         // onChange={() => setShowModal(false)}
         >
-        <i class="fas fa-plus"></i>
+        <i className="fas fa-plus"></i>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

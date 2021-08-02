@@ -13,7 +13,7 @@ function EditFridgeModal({currFridge}) {
         className='logBtns'
         onClick={() => setShowModal(true)}
       >
-        <i class="fas fa-edit fridgeBtns">
+        <i className="fas fa-edit fridgeBtns">
         </i>
       </button>
       {showModal && (
