@@ -6,6 +6,26 @@ module.exports = {
       {
         fridgeId: 1,
         ingredientId: 1
+      },
+      {
+        fridgeId: 1,
+        ingredientId: 2
+      },
+      {
+        fridgeId: 1,
+        ingredientId: 10
+      },
+      {
+        fridgeId: 2,
+        ingredientId: 11
+      },
+      {
+        fridgeId: 3,
+        ingredientId: 12
+      },
+      {
+        fridgeId: 3,
+        ingredientId: 13
       }
     ], {});
   },

@@ -1,0 +1,31 @@
+#kitchenDiv {
+  margin: 50px;
+}
+
+.kitchenTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fridgeDiv {
+  margin: 8px;
+  padding: 8px;
+  background: linear-gradient(
+    180deg,
+    rgba(254, 203, 122, 1) 0%,
+    rgba(235, 168, 103, 1) 100%
+  );
+  border: 3px inset #db8205;
+  outline: 2px solid #5b2b2a;
+}
+
+.fridgeTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fridgeBtns {
+  font-size: unset;
+  margin-left: 5px;
+}

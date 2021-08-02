@@ -1,8 +1,13 @@
 import React from "react";
 import './Splash.css'
 import qosgif from '../../media/images/qosgif.gif'
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router";
 
 function Splash() {
+
+    const sessionUser = useSelector((state) => state.session.user);
+    if (sessionUser) return <Redirect to="/kitchen" />;
 
     return (
         <div id='splashDiv'>

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormPage';
 import LoginFormPage from "./components/LoginFormPage";
-import Splash from './components/Splash';
-import * as sessionActions from './store/session';
 import Navigation from './components/Navigation';
+import Splash from './components/Splash';
+import KitchenComponent from './components/KitchenComponent';
+import * as sessionActions from './store/session';
+import * as kitchenActions from './store/kitchen'
 import { Modal } from './context/Modal';
 import SVme from './media/images/pnMe.png'
 
@@ -14,6 +16,7 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -37,6 +40,9 @@ function App() {
         <Switch>
           <Route path="/" exact >
             <Splash />
+          </Route>
+          <Route path="/kitchen">
+            <KitchenComponent />
           </Route>
           <Route path="/login" >
             <LoginFormPage />

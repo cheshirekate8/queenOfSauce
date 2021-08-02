@@ -10,7 +10,7 @@ module.exports = {
         name: 'My Fridge'
       },
       {
-        userId: 2,
+        userId: 1,
         name: 'My Other Fridge'
       },
      ], {});
