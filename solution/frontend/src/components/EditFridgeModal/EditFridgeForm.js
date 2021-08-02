@@ -1,28 +1,28 @@
 import React, { useState } from "react";
 import * as kitchenActions from "../../store/kitchen"
 import { useDispatch, useSelector } from "react-redux";
-import "./NewFridge.css";
+import "./EditFridge.css";
 
-function NewFridgeForm() {
+function EditFridgeForm({currFridge}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
   const [errors, setErrors] = useState([]);
-  const [showModal, setShowModal] = useState(true);
+  // const [showModal, setShowModal] = useState(true);
 
-  let userId = sessionUser.id
+  // let userId = sessionUser.id
+
+  console.log(currFridge.id)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    // console.log(userId)
-    // console.log(name)
-    dispatch(kitchenActions.newFridge(userId, name))
+    dispatch(kitchenActions.editFridge(currFridge.id, name))
   };
 
   return (
     <>
-      <h1>New Fridge</h1>
+      <h1>Edit Fridge</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
@@ -38,10 +38,10 @@ function NewFridgeForm() {
             required
           />
         </label>
-        <button type="submit">Create New Fridge</button>
+        <button type="submit">Create Edit Fridge</button>
       </form>
     </>
   );
 }
 
-export default NewFridgeForm;
+export default EditFridgeForm;

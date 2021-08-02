@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import NewFridgeForm from './NewFridgeForm';
+import EditFridgeForm from './EditFridgeForm';
 
-function NewFridgeModal() {
+function EditFridgeModal({currFridge}) {
   const [showModal, setShowModal] = useState(false);
+
+
 
   return (
     <>
       <button
         className='logBtns'
         onClick={() => setShowModal(true)}
-        // onChange={() => setShowModal(false)}
-        >
-        <i class="fas fa-plus"></i>
+      >
+        <i class="fas fa-edit fridgeBtns">
+        </i>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <NewFridgeForm />
+          <EditFridgeForm currFridge={currFridge}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default NewFridgeModal;
+export default EditFridgeModal;

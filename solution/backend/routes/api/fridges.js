@@ -45,7 +45,7 @@ router.get(
 )
 
 router.patch(
-    '/:id(\\d+)',
+    '/',
     asyncHandler(async (req, res) => {
         const {fridgeId, name} = req.body
         const fridge = await Fridge.findByPk(fridgeId);
@@ -69,18 +69,9 @@ router.delete(
             await row.destroy()
         })
         await fridge.destroy()
-        return res.json({ message: 'success' });
+        return res.json({ message: 'success', userId: fridge.userId });
     })
 )
 
-
-// //Get a fridge and all it's ingredients
-// router.get(
-//   '',
-//   asyncHandler(async (req, res) => {
-//     const users = await User.findAll();
-//     return res.json(users)
-//   })
-// )
 
 module.exports = router;
