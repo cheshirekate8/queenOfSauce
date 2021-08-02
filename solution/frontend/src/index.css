@@ -54,7 +54,7 @@ li {
 }
 
 #aboutMeImg {
-  position: absolute;
+  position: fixed;
   bottom: 0px;
   height: 75px;
 }
