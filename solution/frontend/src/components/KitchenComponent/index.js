@@ -6,6 +6,7 @@ import NewFridgeModal from "../NewFridgeModal";
 import EditFridgeModal from "../EditFridgeModal";
 import * as kitchenActions from "../../store/kitchen";
 import * as recipeActions from "../../store/cookbook"
+import * as ingredientActions from "../../store/pantry"
 
 function KitchenComponent() {
 
@@ -16,6 +17,7 @@ function KitchenComponent() {
 
     useEffect(() => {
         dispatch(recipeActions.getRecipes())
+        dispatch(ingredientActions.getIngredients())
         dispatch(kitchenActions.getFridges(sessionUser?.id))
     }, [dispatch]);
 

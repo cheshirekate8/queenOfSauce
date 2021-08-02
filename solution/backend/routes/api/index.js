@@ -3,6 +3,7 @@ const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
 const fridgesRouter = require("./fridges.js");
 const recipesRouter = require("./recipes.js")
+const ingredientRouter = require("./ingredients.js")
 
 // // GET /api/set-token-cookie
 // const asyncHandler = require('express-async-handler');
@@ -43,11 +44,9 @@ router.post("/test", function (req, res) {
 });
 
 router.use("/session", sessionRouter);
-
 router.use("/users", usersRouter);
-
 router.use("/fridges", fridgesRouter)
-
 router.use("/recipes", recipesRouter)
+router.use("/ingredients", ingredientRouter)
 
 module.exports = router;

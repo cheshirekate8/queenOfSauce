@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf.js";
 import * as kitchenActions from './kitchen';
 import * as recipeActions from "./cookbook";
+import * as ingredientActions from "./pantry"
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
@@ -23,6 +24,7 @@ export const login = ({ credential, password }) => async dispatch => {
   dispatch(setUser(data.user));
   dispatch(kitchenActions.getFridges(data.user.id));
   dispatch(recipeActions.getRecipes())
+  dispatch(ingredientActions.getIngredients())
 
   return response;
 };

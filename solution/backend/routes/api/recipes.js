@@ -1,8 +1,6 @@
 const express = require("express");
-const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
-const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User, Recipe, Ingredient, RecipeIngredients } = require("../../db/models");
+const { Recipe, Ingredient } = require("../../db/models");
 const router = express.Router();
 
 

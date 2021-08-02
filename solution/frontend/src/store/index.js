@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session';
 import kitchen from './kitchen';
 import cookbook from './cookbook';
+import pantry from './pantry'
 
 const rootReducer = combineReducers({
   session,
   kitchen,
-  cookbook
+  cookbook,
+  pantry
 });
 
 let enhancer;
