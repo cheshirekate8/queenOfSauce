@@ -5,6 +5,7 @@ import { Redirect, Link } from "react-router-dom";
 import NewFridgeModal from "../NewFridgeModal";
 import EditFridgeModal from "../EditFridgeModal";
 import * as kitchenActions from "../../store/kitchen";
+import * as recipeActions from "../../store/cookbook"
 
 function KitchenComponent() {
 
@@ -14,6 +15,7 @@ function KitchenComponent() {
 
 
     useEffect(() => {
+        dispatch(recipeActions.getRecipes())
         dispatch(kitchenActions.getFridges(sessionUser?.id))
     }, [dispatch]);
 
