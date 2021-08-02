@@ -26,7 +26,6 @@ function RecipesComponent() {
 
     return (
         <div id='recipesDiv'>
-            {sessionUser &&
                 <div>
                     <h1 className='recipesTitle'>
                         Recipes
@@ -45,7 +44,6 @@ function RecipesComponent() {
                         ))}
                     </div>
                 </div>
-            }
         </div>
     );
 }

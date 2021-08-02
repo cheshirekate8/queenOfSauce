@@ -13,7 +13,7 @@ import SVme from './media/images/pnMe.png'
 import { ExternalLink } from 'react-external-link';
 import LinksComponent from './components/LinksComponent';
 import RecipesComponent from './components/RecipesComponent';
-
+import IngredientsComponent from './components/IngredientsComponent';
 
 function App() {
   const dispatch = useDispatch();
@@ -60,7 +60,7 @@ function App() {
             <RecipesComponent />
           </Route>
           <Route path="/ingredients">
-            <h1>Ingredients</h1>
+            <IngredientsComponent />
           </Route>
           <Route path="/login" >
             <LoginFormPage />
