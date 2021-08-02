@@ -34,7 +34,7 @@ function App() {
             <ExternalLink href='https://github.com/cheshirekate8/'>
               <i class="fab fa-github"></i>
             </ExternalLink>
-            <ExternalLink href='www.linkedin.com/in/dev-kathleen-young'>
+            <ExternalLink href='https://www.linkedin.com/in/dev-kathleen-young'>
               <i class="fab fa-linkedin-in"></i>
             </ExternalLink>
             <ExternalLink href='https://angel.co/u/kathleen-young-3'>
