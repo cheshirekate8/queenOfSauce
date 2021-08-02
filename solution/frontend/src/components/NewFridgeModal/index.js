@@ -16,7 +16,7 @@ function NewFridgeModal() {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <NewFridgeForm />
+          <NewFridgeForm setShowModal={setShowModal}/>
         </Modal>
       )}
     </>

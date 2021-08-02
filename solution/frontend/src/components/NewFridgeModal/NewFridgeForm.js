@@ -3,20 +3,20 @@ import * as kitchenActions from "../../store/kitchen"
 import { useDispatch, useSelector } from "react-redux";
 import "./NewFridge.css";
 
-function NewFridgeForm() {
+function NewFridgeForm({setShowModal}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
   const [errors, setErrors] = useState([]);
-  // const [showModal, setShowModal] = useState(true);
 
   let userId = sessionUser.id
+
+  // console.log(showModal)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    // console.log(userId)
-    // console.log(name)
+    setShowModal(false)
     dispatch(kitchenActions.newFridge(userId, name))
   };
 
