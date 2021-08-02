@@ -12,6 +12,7 @@ import { Modal } from './context/Modal';
 import SVme from './media/images/pnMe.png'
 import { ExternalLink } from 'react-external-link';
 import LinksComponent from './components/LinksComponent';
+import RecipesComponent from './components/RecipesComponent';
 
 
 function App() {
@@ -56,7 +57,7 @@ function App() {
             <KitchenComponent />
           </Route>
           <Route path="/recipes">
-            <h1>Recipes</h1>
+            <RecipesComponent />
           </Route>
           <Route path="/ingredients">
             <h1>Ingredients</h1>

@@ -16,19 +16,19 @@ export const getIngredients = () => async dispatch => {
     }
 }
 
-const initialState = { ingredients: {} };
+const initialState = { ingredients: null };
 
 function reducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_INGREDIENTS:
-            const allIngs = {};
-            action.list.forEach(ingredient => {
-                allIngs[ingredient.id] = ingredient
-            })
+            // const allIngs = {};
+            // action.list.forEach(ingredient => {
+            //     allIngs[ingredient.id] = ingredient
+            // })
             newState = {
                 ...state,
-                ingredients: allIngs
+                ingredients: action.list
             }
             return newState;
         default:
