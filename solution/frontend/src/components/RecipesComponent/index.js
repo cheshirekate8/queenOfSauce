@@ -24,24 +24,26 @@ function RecipesComponent() {
 
     return (
         <div id='recipesDiv'>
-                <div>
-                    <h1 className='recipesTitle'>
-                        Recipes
-                    </h1>
-                    <div id='recipesListDiv'>
-                        {recipes && recipes.map((recipe, i) => (
-                            <div id={`${recipe.name}Div`} className="recipeDiv">
-                                <h5>{recipe.name}</h5>
-                                <img src={recipe.imgUrl} alt={recipe.name} />
-                                <ol>Ingredients
-                                    {ingredients && ingredients[i].map((ingredient, j) => (
-                                        <h6>{ingredient.name}</h6>
-                                    ))}
-                                </ol>
+            <div>
+                <h1 className='recipesTitle'>
+                    Recipes
+                </h1>
+                <div id='recipesListDiv'>
+                    {recipes && recipes.map((recipe, i) => (
+                        <div id={`${recipe.name}Div`} className="recipeDiv">
+                            <h4>{recipe.name}</h4>
+                            <img src={recipe.imgUrl} alt={recipe.name} width={"48px"} height={"48px"} />
+                            <p className='reciP'>{recipe.desc}</p>
+                            <div>
+                                <h5 className='recIngTitle'>Ingredients</h5>
+                                {ingredients && ingredients[i].map((ingredient, j) => (
+                                    <p className='reciP'>{ingredient.name}</p>
+                                ))}
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
                 </div>
+            </div>
         </div>
     );
 }
