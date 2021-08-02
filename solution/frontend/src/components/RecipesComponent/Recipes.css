@@ -1,0 +1,23 @@
+#recipesListDiv {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0px;
+    margin: 10px 0px;
+}
+
+.recipeDiv {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+    grid-template-rows: 35px 48px 60px;
+    padding: 5px;
+    margin: 5px;
+    /* border: black 1px solid; */
+    width: 100px;
+}
+
+ol {
+    margin: 0;
+    padding: 0;
+}

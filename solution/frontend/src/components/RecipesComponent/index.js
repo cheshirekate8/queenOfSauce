@@ -27,24 +27,24 @@ function RecipesComponent() {
     return (
         <div id='recipesDiv'>
             {sessionUser &&
-                <>
-                    <div id="recipesDiv2">
-                        <h1 className='recipesTitle'>
-                            Recipes
-                        </h1>
+                <div>
+                    <h1 className='recipesTitle'>
+                        Recipes
+                    </h1>
+                    <div id='recipesListDiv'>
                         {recipes && recipes.map((recipe, i) => (
-                            <div id={`${recipe.name}Div`}>
-                                <p>{recipe.name}</p>
+                            <div id={`${recipe.name}Div`} className="recipeDiv">
+                                <h5>{recipe.name}</h5>
                                 <img src={recipe.imgUrl} alt={`Image of ${recipe.name}`} />
                                 <ol>Ingredients
                                     {ingredients && ingredients[i].map((ingredient, j) => (
-                                        <li>{ingredient.name}</li>
+                                        <h6>{ingredient.name}</h6>
                                     ))}
                                 </ol>
                             </div>
                         ))}
                     </div>
-                </>
+                </div>
             }
         </div>
     );
