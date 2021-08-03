@@ -28,7 +28,7 @@ export const newIngredient = (name, imgUrl, desc, userId) => async dispatch => {
     if (response.ok) {
         const newIngredient = await response.json();
         dispatch(newIng(newIngredient))
-        // return getIngredients();
+        dispatch(getIngredients());
     }
 }
 

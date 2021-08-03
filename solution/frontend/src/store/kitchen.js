@@ -47,12 +47,7 @@ export const newFridge = (userId, name) => async dispatch => {
     if (response.ok) {
         const newFridge = await response.json();
         dispatch(newKitchen(newFridge));
-        const response2 = await csrfFetch(`/api/fridges/user/${userId}`)
-        if (response2.ok) {
-            const fridges = await response2.json();
-            dispatch(getKitchen(fridges));
-            return fridges;
-        }
+        dispatch(getFridges(userId));
     }
 }
 
@@ -62,12 +57,7 @@ export const deleteFridge = (fridgeId) => async (dispatch) => {
     })
     const data = await response.json();
     dispatch(deleteRef());
-    const response2 = await csrfFetch(`/api/fridges/user/${data.userId}`)
-    if (response2.ok) {
-        const fridges = await response2.json();
-        dispatch(getKitchen(fridges));
-        return fridges;
-    }
+    dispatch(getFridges(data.userId));
 }
 
 export const editFridge = (fridgeId, name) => async (dispatch) => {

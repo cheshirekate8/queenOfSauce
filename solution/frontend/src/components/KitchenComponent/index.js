@@ -4,6 +4,7 @@ import './Kitchen.css';
 import { Redirect } from "react-router-dom";
 import NewFridgeModal from "../NewFridgeModal";
 import EditFridgeModal from "../EditFridgeModal";
+import MyIngredientsComponent from "./MyIngredientsComponent";
 import * as kitchenActions from "../../store/kitchen";
 import * as recipeActions from "../../store/cookbook"
 import * as pantryActions from "../../store/pantry"
@@ -31,7 +32,8 @@ function KitchenComponent() {
     }
 
     return (
-        <div id='kitchenDiv'>
+        <>
+        <div className='kitchenDiv'>
             <h1 className='kitchenTitle'>{sessionUser.username}'s Kitchen
                 <NewFridgeModal />
             </h1>
@@ -44,7 +46,7 @@ function KitchenComponent() {
                             <i
                                 className="fas fa-trash-alt fridgeBtns"
                                 onClick={() => dispatch(kitchenActions.deleteFridge(fridge.id))}
-                            >
+                                >
                             </i>
                         </div>
                     </div>
@@ -56,6 +58,10 @@ function KitchenComponent() {
                 </div>
             ))}
         </div>
+        <div>
+            <MyIngredientsComponent />
+        </div>
+            </>
     );
 }
 
