@@ -78,8 +78,6 @@ export const editFridge = (fridgeId, name) => async (dispatch) => {
 }
 
 
-
-
 const initialState = { fridges: null };
 
 function reducer(state = initialState, action) {
