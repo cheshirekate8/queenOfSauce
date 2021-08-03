@@ -13,6 +13,20 @@ router.get(
     })
 )
 
+// Get a all of a user's ingredients
+router.get(
+    '/user/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        const userId = parseInt(req.params.id, 10);
+        const ingredients = await Ingredient.findAll({
+            where: {
+                userId: userId
+            }
+        });
+        return res.json(ingredients)
+    })
+)
+
 // Create a new ingredient
 router.post(
     '',

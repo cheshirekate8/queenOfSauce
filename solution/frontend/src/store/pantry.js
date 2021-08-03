@@ -1,12 +1,19 @@
 import { csrfFetch } from "./csrf.js";
 
 const GET_INGREDIENTS = '/ingredients'
+const GET_MY_INGREDIENTS = '/myIngredients'
 const NEW_INGREDIENT = '/newIngredient'
 
 const getIng = (list) => ({
     type: GET_INGREDIENTS,
     list
 })
+
+const getMyIng = (list) => ({
+    type: GET_MY_INGREDIENTS,
+    list
+})
+
 const newIng = (payload) => ({
     type: NEW_INGREDIENT,
     payload
@@ -20,6 +27,15 @@ export const getIngredients = () => async dispatch => {
         dispatch(getIng(ingredients));
     }
 }
+
+export const getMyIngredients = (userId) => async dispatch => {
+    const response = await csrfFetch(`/api/ingredients/user/${userId}`)
+    if (response.ok) {
+        const ingredients = await response.json();
+        dispatch(getMyIng(ingredients));
+    }
+}
+
 export const newIngredient = (name, imgUrl, desc, userId) => async dispatch => {
     const response = await csrfFetch("/api/ingredients", {
         method: "POST",
@@ -32,7 +48,7 @@ export const newIngredient = (name, imgUrl, desc, userId) => async dispatch => {
     }
 }
 
-const initialState = { ingredients: null };
+const initialState = { ingredients: null, myIngredients: null };
 
 function reducer(state = initialState, action) {
     let newState;
@@ -49,6 +65,12 @@ function reducer(state = initialState, action) {
             return newState;
         case NEW_INGREDIENT:
             return state;
+        case GET_MY_INGREDIENTS:
+            newState = {
+                ...state,
+                myIngredients: action.list
+            }
+            return newState;
         default:
             return state;
     }
