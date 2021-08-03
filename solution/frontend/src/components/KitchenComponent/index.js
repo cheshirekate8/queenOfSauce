@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import './Kitchen.css';
 import { Redirect } from "react-router-dom";
-import NewFridgeModal from "../NewFridgeModal";
-import EditFridgeModal from "../EditFridgeModal";
 import MyIngredientsComponent from "./MyIngredientsComponent";
 import MyFridgesComponent from "./MyFridgesComponent";
 import * as kitchenActions from "../../store/kitchen";

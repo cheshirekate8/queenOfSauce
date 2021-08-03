@@ -13,6 +13,29 @@ router.get(
     })
 )
 
+// Get a single ingredient
+router.get(
+    '/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        const ingredientId = parseInt(req.params.id, 10);
+        const ingredient = await Ingredient.findByPk(ingredientId);
+        return res.json(ingredient)
+    })
+)
+
+// Edit a single ingredient
+router.patch(
+    '/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        const ingredientId = parseInt(req.params.id, 10);
+        const ingredient = await Ingredient.findByPk(ingredientId);
+        const { name, imgUrl, desc, userId } = req.body;
+
+        await ingredient.update({ name, imgUrl, desc, userId })
+        return res.json(ingredient)
+    })
+)
+
 // Get a all of a user's ingredients
 router.get(
     '/user/:id(\\d+)',
@@ -39,4 +62,14 @@ router.post(
     }),
 );
 
+// Delete a single ingredient
+router.delete(
+    '/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        const ingredientId = parseInt(req.params.id, 10);
+        const ingredient = await Ingredient.findByPk(ingredientId);
+        await ingredient.destroy()
+        return res.json({ message: 'success', userId: ingredient.userId })
+    })
+)
 module.exports = router;

@@ -1,27 +1,28 @@
 import React, { useState } from "react";
-import * as pantryActions from "../../store/pantry"
 import { useDispatch, useSelector } from "react-redux";
-import "./NewIngredient.css";
+import * as pantryActions from "../../store/pantry"
 
-function NewIngredientForm({ setShowModal }) {
+function EditIngredientForm({ currIngredient  }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const userId = sessionUser.id
-    const [name, setName] = useState("");
-    const [imgUrl, setImgUrl] = useState("")
-    const [desc, setDesc] = useState("")
+    const [name, setName] = useState(currIngredient.name);
+    const [imgUrl, setImgUrl] = useState(currIngredient.imgUrl)
+    const [desc, setDesc] = useState(currIngredient.desc)
     const [errors, setErrors] = useState([]);
+
+    console.log(currIngredient.id)
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        setShowModal(false)
-        dispatch(pantryActions.newIngredient(name,imgUrl,desc,userId))
+        const id = currIngredient.id;
+        dispatch(pantryActions.editIngredient(id, name,imgUrl,desc,userId))
     };
 
     return (
         <>
-            <h1>New Ingredient</h1>
+            <h1>Edit Ingredient</h1>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (
@@ -55,10 +56,10 @@ function NewIngredientForm({ setShowModal }) {
                         required
                     />
                 </label>
-                <button type="submit">Create New Ingredient</button>
+                <button type="submit">Edit Ingredient</button>
             </form>
         </>
     );
 }
 
-export default NewIngredientForm;
+export default EditIngredientForm;

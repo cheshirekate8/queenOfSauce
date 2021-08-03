@@ -3,6 +3,8 @@ import { csrfFetch } from "./csrf.js";
 const GET_INGREDIENTS = '/ingredients'
 const GET_MY_INGREDIENTS = '/myIngredients'
 const NEW_INGREDIENT = '/newIngredient'
+const DELETE_INGREDIENT = '/deleteIngredient'
+const EDIT_INGREDIENT = '/editIngredient'
 
 const getIng = (list) => ({
     type: GET_INGREDIENTS,
@@ -17,6 +19,14 @@ const getMyIng = (list) => ({
 const newIng = (payload) => ({
     type: NEW_INGREDIENT,
     payload
+})
+
+const editIng = () => ({
+    type: EDIT_INGREDIENT,
+})
+
+const deleteIng = () => ({
+    type: DELETE_INGREDIENT,
 })
 
 
@@ -49,6 +59,30 @@ export const newIngredient = (name, imgUrl, desc, userId) => async dispatch => {
     }
 }
 
+export const editIngredient = (ingredientId, name, imgUrl, desc, userId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/ingredients/${ingredientId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({name, imgUrl, desc, userId}),
+    })
+    const data = await response.json();
+    dispatch(editIng());
+    dispatch(getIngredients());
+    dispatch(getMyIngredients(data.userId));
+}
+
+export const deleteIngredient = (ingredientId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/ingredients/${ingredientId}`, {
+        method: 'DELETE'
+    })
+    const data = await response.json();
+    dispatch(deleteIng());
+    dispatch(getMyIngredients(data.userId));
+}
+
+
 const initialState = { ingredients: null, myIngredients: null };
 
 function reducer(state = initialState, action) {
@@ -64,8 +98,6 @@ function reducer(state = initialState, action) {
                 ingredients: action.list
             }
             return newState;
-        case NEW_INGREDIENT:
-            return state;
         case GET_MY_INGREDIENTS:
             newState = {
                 ...state,

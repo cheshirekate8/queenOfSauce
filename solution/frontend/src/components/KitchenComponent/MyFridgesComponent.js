@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import './Kitchen.css';
-import { Redirect } from "react-router-dom";
 import NewFridgeModal from "../NewFridgeModal";
 import EditFridgeModal from "../EditFridgeModal";
 import * as kitchenActions from "../../store/kitchen";
-import * as recipeActions from "../../store/cookbook"
-import * as pantryActions from "../../store/pantry"
-import NewIngredientModal from "../NewIngredientModal";
 
 function MyFridgesComponent() {
 

@@ -27,7 +27,6 @@ const deleteRef = () => ({
 
 const editRef = () => ({
     type: EDIT_REF,
-
 })
 
 export const getFridges = userId => async dispatch => {
@@ -69,7 +68,6 @@ export const editFridge = (fridgeId, name) => async (dispatch) => {
         body: JSON.stringify({fridgeId, name}),
     })
     const data = await response.json();
-    console.log(data)
     dispatch(editRef());
     const response2 = await csrfFetch(`/api/fridges/user/${data.userId}`)
     if (response2.ok) {
@@ -98,10 +96,6 @@ function reducer(state = initialState, action) {
                 ...state,
                 fridges: null
             }
-        case NEW_KITCHEN:
-            return state;
-        case DELETE_REF:
-            return state
         default:
             return state;
     }

@@ -7,11 +7,6 @@ function EditFridgeForm({currFridge}) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [errors, setErrors] = useState([]);
-  // const [showModal, setShowModal] = useState(true);
-
-  // let userId = sessionUser.id
-
-  console.log(currFridge.id)
 
   const handleSubmit = (e) => {
     e.preventDefault();
