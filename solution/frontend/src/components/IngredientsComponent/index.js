@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
-import * as ingredientActions from "../../store/pantry"
+import * as pantryActions from "../../store/pantry"
 import './Ingredients.css'
+import NewIngredientModal from "../NewIngredientModal";
 
 function IngredientsComponent() {
     const dispatch = useDispatch()
@@ -10,7 +11,7 @@ function IngredientsComponent() {
     const ingredients = useSelector((state) => state.pantry.ingredients)
 
     useEffect(() => {
-        dispatch(ingredientActions.getIngredients())
+        dispatch(pantryActions.getIngredients())
     }, [dispatch]);
 
     if (!sessionUser) return <Redirect to="/" />;
@@ -20,6 +21,7 @@ function IngredientsComponent() {
         <div id='ingredientsDiv'>
             <h1 className='ingredientsTitle'>
                 Ingredients
+                <NewIngredientModal />
             </h1>
             <div id='ingredientsListDiv'>
                 {ingredients && ingredients.map((ingredient) => (

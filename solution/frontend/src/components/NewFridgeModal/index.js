@@ -10,7 +10,6 @@ function NewFridgeModal() {
       <button
         className='logBtns'
         onClick={() => setShowModal(true)}
-        // onChange={() => setShowModal(false)}
         >
         <i className="fas fa-plus"></i>
       </button>

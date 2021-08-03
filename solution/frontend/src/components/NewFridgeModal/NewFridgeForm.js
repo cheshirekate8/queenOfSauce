@@ -11,8 +11,6 @@ function NewFridgeForm({setShowModal}) {
 
   let userId = sessionUser.id
 
-  // console.log(showModal)
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
