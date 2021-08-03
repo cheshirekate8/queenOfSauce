@@ -5,8 +5,6 @@ import EditFridgeForm from './EditFridgeForm';
 function EditFridgeModal({currFridge}) {
   const [showModal, setShowModal] = useState(false);
 
-
-
   return (
     <>
       <button

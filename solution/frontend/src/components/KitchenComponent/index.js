@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import NewFridgeModal from "../NewFridgeModal";
 import EditFridgeModal from "../EditFridgeModal";
 import MyIngredientsComponent from "./MyIngredientsComponent";
+import MyFridgesComponent from "./MyFridgesComponent";
 import * as kitchenActions from "../../store/kitchen";
 import * as recipeActions from "../../store/cookbook"
 import * as pantryActions from "../../store/pantry"
@@ -34,35 +35,9 @@ function KitchenComponent() {
 
     return (
         <>
-        <div className='kitchenDiv'>
-            <h1 className='kitchenTitle'>{sessionUser.username}'s Kitchen
-                <NewFridgeModal />
-            </h1>
-            {fridges && fridges.map((fridge, i) => (
-                <div className='fridgeDiv' key={`${fridge.name}key`}>
-                    <div className='fridgeTitle' id={fridge.name}>
-                        {fridge.name}
-                        <div>
-                            <EditFridgeModal currFridge={fridge}/>
-                            <i
-                                className="fas fa-trash-alt fridgeBtns"
-                                onClick={() => dispatch(kitchenActions.deleteFridge(fridge.id))}
-                                >
-                            </i>
-                        </div>
-                    </div>
-                    {ingredients[i].map(ingredient => (
-                        <>
-                            <img src={ingredient.imgUrl} alt={ingredient.name}  key={`${ingredient.name}key`}/>
-                        </>
-                    ))}
-                </div>
-            ))}
-        </div>
-        <div>
+            <MyFridgesComponent />
             <MyIngredientsComponent />
-        </div>
-            </>
+        </>
     );
 }
 

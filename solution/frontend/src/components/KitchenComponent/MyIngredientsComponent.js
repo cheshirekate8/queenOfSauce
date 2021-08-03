@@ -1,18 +1,26 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import './Kitchen.css';
-import { Redirect } from "react-router-dom";
-import NewFridgeModal from "../NewFridgeModal";
-import EditFridgeModal from "../EditFridgeModal";
-import * as kitchenActions from "../../store/kitchen";
-import * as recipeActions from "../../store/cookbook"
-import * as pantryActions from "../../store/pantry"
+import NewIngredientModal from "../NewIngredientModal";
 
 function MyIngredientsComponent() {
 
+    const myIngredients = useSelector((state) => state.pantry.myIngredients)
+
     return (
         <div className="kitchenDiv">
-            <h1>My Custom Ingredients</h1>
+            <h1 className="kitchenTitle">My Custom Ingredients
+            <NewIngredientModal />
+            </h1>
+            <div id='ingredientsListDiv'>
+                {myIngredients && myIngredients.map((ingredient) => (
+                    <div id={`${ingredient.name}Div`} className="ingredientDiv">
+                        <h5>{ingredient.name}</h5>
+                        <img src={ingredient.imgUrl} alt={`${ingredient.name}`} width={"48px"} height={"48px"} />
+                        <p className='reciP'>{ingredient.desc}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

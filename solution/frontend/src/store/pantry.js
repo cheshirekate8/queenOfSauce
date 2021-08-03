@@ -45,6 +45,7 @@ export const newIngredient = (name, imgUrl, desc, userId) => async dispatch => {
         const newIngredient = await response.json();
         dispatch(newIng(newIngredient))
         dispatch(getIngredients());
+        dispatch(getMyIngredients(userId));
     }
 }
 
