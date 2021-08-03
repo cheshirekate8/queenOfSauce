@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import NewFridgeForm from './NewFridgeForm';
+import NewIngredientForm from './NewIngredientForm';
 
-function NewFridgeModal() {
+function NewIngredientModal() {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -15,11 +15,11 @@ function NewFridgeModal() {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <NewFridgeForm setShowModal={setShowModal}/>
+          <NewIngredientForm setShowModal={setShowModal}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default NewFridgeModal;
+export default NewIngredientModal;

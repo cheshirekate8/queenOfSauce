@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 import * as kitchenActions from "../../store/kitchen"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./EditFridge.css";
 
 function EditFridgeForm({currFridge}) {
   const dispatch = useDispatch();
-  const sessionUser = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
   const [errors, setErrors] = useState([]);
-  // const [showModal, setShowModal] = useState(true);
-
-  // let userId = sessionUser.id
-
-  console.log(currFridge.id)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +32,7 @@ function EditFridgeForm({currFridge}) {
             required
           />
         </label>
-        <button type="submit">Create Edit Fridge</button>
+        <button type="submit">Edit Fridge</button>
       </form>
     </>
   );

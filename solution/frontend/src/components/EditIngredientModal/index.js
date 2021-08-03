@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import NewFridgeForm from './NewFridgeForm';
+import EditIngredientForm from './EditIngredientForm';
 
-function NewFridgeModal() {
+function EditIngredientModal({currIngredient}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -10,16 +10,17 @@ function NewFridgeModal() {
       <button
         className='logBtns'
         onClick={() => setShowModal(true)}
-        >
-        <i className="fas fa-plus"></i>
+      >
+        <i className="fas fa-edit fridgeBtns">
+        </i>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <NewFridgeForm setShowModal={setShowModal}/>
+          <EditIngredientForm currIngredient={currIngredient}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default NewFridgeModal;
+export default EditIngredientModal;

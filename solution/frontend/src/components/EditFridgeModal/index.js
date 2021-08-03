@@ -5,15 +5,13 @@ import EditFridgeForm from './EditFridgeForm';
 function EditFridgeModal({currFridge}) {
   const [showModal, setShowModal] = useState(false);
 
-
-
   return (
     <>
       <button
         className='logBtns'
         onClick={() => setShowModal(true)}
       >
-        <i class="fas fa-edit fridgeBtns">
+        <i className="fas fa-edit fridgeBtns">
         </i>
       </button>
       {showModal && (

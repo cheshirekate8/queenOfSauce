@@ -27,7 +27,6 @@ const deleteRef = () => ({
 
 const editRef = () => ({
     type: EDIT_REF,
-
 })
 
 export const getFridges = userId => async dispatch => {
@@ -47,12 +46,7 @@ export const newFridge = (userId, name) => async dispatch => {
     if (response.ok) {
         const newFridge = await response.json();
         dispatch(newKitchen(newFridge));
-        const response2 = await csrfFetch(`/api/fridges/user/${userId}`)
-        if (response2.ok) {
-            const fridges = await response2.json();
-            dispatch(getKitchen(fridges));
-            return fridges;
-        }
+        dispatch(getFridges(userId));
     }
 }
 
@@ -62,12 +56,7 @@ export const deleteFridge = (fridgeId) => async (dispatch) => {
     })
     const data = await response.json();
     dispatch(deleteRef());
-    const response2 = await csrfFetch(`/api/fridges/user/${data.userId}`)
-    if (response2.ok) {
-        const fridges = await response2.json();
-        dispatch(getKitchen(fridges));
-        return fridges;
-    }
+    dispatch(getFridges(data.userId));
 }
 
 export const editFridge = (fridgeId, name) => async (dispatch) => {
@@ -79,8 +68,7 @@ export const editFridge = (fridgeId, name) => async (dispatch) => {
         body: JSON.stringify({fridgeId, name}),
     })
     const data = await response.json();
-    console.log(data)
-    dispatch(editFridge());
+    dispatch(editRef());
     const response2 = await csrfFetch(`/api/fridges/user/${data.userId}`)
     if (response2.ok) {
         const fridges = await response2.json();
@@ -108,10 +96,6 @@ function reducer(state = initialState, action) {
                 ...state,
                 fridges: null
             }
-        case NEW_KITCHEN:
-            return state;
-        case DELETE_REF:
-            return state
         default:
             return state;
     }
