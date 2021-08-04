@@ -18,8 +18,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Fridge.init({
-    userId: DataTypes.INTEGER,
-    name: DataTypes.STRING(50)
+    userId: {
+      allowNull: false,
+      type: DataTypes.INTEGER
+    },
+    name: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+      validate: {
+        len: [3, 50]
+      }
+    },
   }, {
     sequelize,
     modelName: 'Fridge',

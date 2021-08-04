@@ -3,7 +3,16 @@ const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const { User, Fridge, Ingredient, FridgeIngredients } = require("../../db/models");
+
 const router = express.Router();
+
+// const validateFridge = [
+//     check("name")
+//         .exists({ checkFalsy: true })
+//         .notEmpty()
+//         .isLength({ min: 3 })
+//         .withMessage('Please provide a fridge name with at least 3 characters.'),
+// ]
 
 // Create a new fridge
 router.post(
@@ -46,10 +55,11 @@ router.get(
 
 router.patch(
     '/',
+    // validateFridge,
     asyncHandler(async (req, res) => {
-        const {fridgeId, name} = req.body
+        const { fridgeId, name } = req.body
         const fridge = await Fridge.findByPk(fridgeId);
-        const newFridge = await fridge.update({name: name})
+        const newFridge = await fridge.update({ name: name })
         return res.json(newFridge)
     })
 )

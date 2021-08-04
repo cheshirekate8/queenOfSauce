@@ -5,7 +5,7 @@ import "./EditFridge.css";
 
 function EditFridgeForm({currFridge}) {
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
+  const [name, setName] = useState(currFridge.name);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {

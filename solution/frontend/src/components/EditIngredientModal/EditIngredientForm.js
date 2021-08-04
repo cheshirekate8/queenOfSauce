@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as pantryActions from "../../store/pantry"
 
-function EditIngredientForm({ currIngredient  }) {
+function EditIngredientForm({ currIngredient, setShowModal }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const userId = sessionUser.id
@@ -15,6 +15,7 @@ function EditIngredientForm({ currIngredient  }) {
         e.preventDefault();
         setErrors([]);
         const id = currIngredient.id;
+        setShowModal(false)
         dispatch(pantryActions.editIngredient(id, name,imgUrl,desc,userId))
     };
 
