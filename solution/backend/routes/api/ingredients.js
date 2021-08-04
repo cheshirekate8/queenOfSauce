@@ -15,7 +15,7 @@ const validateIngredient = [
         // .isMimeType('jpg')
         .withMessage('Please provide a valid image URL'),
     check("desc")
-        .isLength({ min: 3, max: 50 })
+        .isLength({ min: 3, max: 100 })
         .withMessage('Please provide a description between 3 and 100 characters.'),
     handleValidationErrors
 ]
