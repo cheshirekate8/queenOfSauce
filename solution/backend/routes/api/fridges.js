@@ -9,8 +9,6 @@ const router = express.Router();
 
 const validateFridge = [
     check("name")
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide a fridge name between 3 and 50 characters.')
         .isLength({ min: 3, max: 50 })
         .withMessage('Please provide a fridge name between 3 and 50 characters.'),
     handleValidationErrors

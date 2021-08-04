@@ -8,18 +8,13 @@ const router = express.Router();
 
 const validateIngredient = [
     check("name")
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide an ingredient name between 3 and 30 characters.')
         .isLength({ min: 3, max: 30 })
         .withMessage('Please provide an ingredient name between 3 and 50 characters.'),
     check("imgUrl")
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide an imageUrl.')
         .isURL()
+        // .isMimeType('jpg')
         .withMessage('Please provide a valid image URL'),
     check("desc")
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide a description.')
         .isLength({ min: 3, max: 50 })
         .withMessage('Please provide a description between 3 and 100 characters.'),
     handleValidationErrors
