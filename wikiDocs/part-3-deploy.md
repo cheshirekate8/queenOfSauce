@@ -36,11 +36,11 @@ heroku login
 ```
 
 Add Heroku as a remote to your project's git repository in the following command
-and replace `<name-of-Heroku-app>` with the name of the application you created
+and replace `queenofsauce` with the name of the application you created
 in the [Heroku dashboard].
 
 ```js
-heroku git:remote -a <name-of-Heroku-app>
+heroku git:remote -a queenofsauce
 ```
 
 Next, you will set up your Express + React application to be deployable to
