@@ -47,6 +47,7 @@ export const newFridge = (userId, name) => async dispatch => {
         const newFridge = await response.json();
         dispatch(newKitchen(newFridge));
         dispatch(getFridges(userId));
+        return newFridge
     }
 }
 
@@ -69,12 +70,7 @@ export const editFridge = (fridgeId, name) => async (dispatch) => {
     })
     const data = await response.json();
     dispatch(editRef());
-    const response2 = await csrfFetch(`/api/fridges/user/${data.userId}`)
-    if (response2.ok) {
-        const fridges = await response2.json();
-        dispatch(getKitchen(fridges));
-        return fridges;
-    }
+    dispatch(getFridges(data.userId))
 }
 
 

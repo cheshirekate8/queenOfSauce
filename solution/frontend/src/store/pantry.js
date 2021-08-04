@@ -43,6 +43,7 @@ export const getMyIngredients = (userId) => async dispatch => {
     if (response.ok) {
         const ingredients = await response.json();
         dispatch(getMyIng(ingredients));
+        return ingredients
     }
 }
 
@@ -56,6 +57,7 @@ export const newIngredient = (name, imgUrl, desc, userId) => async dispatch => {
         dispatch(newIng(newIngredient))
         dispatch(getIngredients());
         dispatch(getMyIngredients(userId));
+        return newIngredient
     }
 }
 
@@ -79,6 +81,7 @@ export const deleteIngredient = (ingredientId) => async (dispatch) => {
     })
     const data = await response.json();
     dispatch(deleteIng());
+    dispatch(getIngredients());
     dispatch(getMyIngredients(data.userId));
 }
 

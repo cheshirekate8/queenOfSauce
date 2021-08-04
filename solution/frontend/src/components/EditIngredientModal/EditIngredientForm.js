@@ -11,8 +11,6 @@ function EditIngredientForm({ currIngredient  }) {
     const [desc, setDesc] = useState(currIngredient.desc)
     const [errors, setErrors] = useState([]);
 
-    console.log(currIngredient.id)
-
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
