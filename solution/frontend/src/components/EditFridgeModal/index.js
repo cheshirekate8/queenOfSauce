@@ -16,7 +16,7 @@ function EditFridgeModal({currFridge}) {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditFridgeForm currFridge={currFridge}/>
+          <EditFridgeForm currFridge={currFridge} setShowModal={setShowModal}/>
         </Modal>
       )}
     </>

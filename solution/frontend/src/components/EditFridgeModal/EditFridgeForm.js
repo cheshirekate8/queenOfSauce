@@ -3,7 +3,7 @@ import * as kitchenActions from "../../store/kitchen"
 import { useDispatch } from "react-redux";
 import "./EditFridge.css";
 
-function EditFridgeForm({currFridge}) {
+function EditFridgeForm({currFridge, setShowModal}) {
   const dispatch = useDispatch();
   const [name, setName] = useState(currFridge.name);
   const [errors, setErrors] = useState([]);
@@ -12,6 +12,14 @@ function EditFridgeForm({currFridge}) {
     e.preventDefault();
     setErrors([]);
     dispatch(kitchenActions.editFridge(currFridge.id, name))
+    .then(() => {
+      setShowModal(false)
+    })
+    .catch(async (res) => {
+      const data = await res.json();
+      console.log(data)
+      if (data && data.errors) setErrors(data.errors);
+    });
   };
 
   return (

@@ -3,7 +3,7 @@ import * as kitchenActions from "../../store/kitchen"
 import { useDispatch, useSelector } from "react-redux";
 import "./NewFridge.css";
 
-function NewFridgeForm({setShowModal}) {
+function NewFridgeForm({ setShowModal }) {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
@@ -14,8 +14,15 @@ function NewFridgeForm({setShowModal}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    setShowModal(false)
     dispatch(kitchenActions.newFridge(userId, name))
+      .then(() => {
+        setShowModal(false)
+      })
+      .catch(async (res) => {
+        const data = await res.json();
+        console.log(data)
+        if (data && data.errors) setErrors(data.errors);
+      });
   };
 
   return (
@@ -33,7 +40,6 @@ function NewFridgeForm({setShowModal}) {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            required
           />
         </label>
         <button type="submit">Create New Fridge</button>

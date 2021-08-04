@@ -43,12 +43,10 @@ export const newFridge = (userId, name) => async dispatch => {
         method: "POST",
         body: JSON.stringify({ userId, name }),
     });
-    if (response.ok) {
-        const newFridge = await response.json();
-        dispatch(newKitchen(newFridge));
-        dispatch(getFridges(userId));
-        return newFridge
-    }
+    const newFridge = await response.json();
+    dispatch(newKitchen(newFridge));
+    dispatch(getFridges(userId));
+    return response;
 }
 
 export const deleteFridge = (fridgeId) => async (dispatch) => {
@@ -66,7 +64,7 @@ export const editFridge = (fridgeId, name) => async (dispatch) => {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({fridgeId, name}),
+        body: JSON.stringify({ fridgeId, name }),
     })
     const data = await response.json();
     dispatch(editRef());
