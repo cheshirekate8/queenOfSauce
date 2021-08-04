@@ -1,4 +1,3 @@
-
 {
   "name": "authenticate-me",
   "version": "0.1.0",
@@ -44,4 +43,3 @@
   },
   "proxy": "http://localhost:5000"
 }
->>>>>>> fba622e653029cc8fe8f21b3963c1ea1e87e0f43
