@@ -16,7 +16,7 @@ function EditIngredientModal({currIngredient}) {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditIngredientForm currIngredient={currIngredient}/>
+          <EditIngredientForm currIngredient={currIngredient} setShowModal={setShowModal}/>
         </Modal>
       )}
     </>

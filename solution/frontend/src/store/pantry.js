@@ -43,6 +43,7 @@ export const getMyIngredients = (userId) => async dispatch => {
     if (response.ok) {
         const ingredients = await response.json();
         dispatch(getMyIng(ingredients));
+        return ingredients
     }
 }
 
@@ -51,12 +52,11 @@ export const newIngredient = (name, imgUrl, desc, userId) => async dispatch => {
         method: "POST",
         body: JSON.stringify({ name, imgUrl, desc, userId }),
     });
-    if (response.ok) {
-        const newIngredient = await response.json();
-        dispatch(newIng(newIngredient))
-        dispatch(getIngredients());
-        dispatch(getMyIngredients(userId));
-    }
+    const newIngredient = await response.json();
+    dispatch(newIng(newIngredient))
+    dispatch(getIngredients());
+    dispatch(getMyIngredients(userId));
+    return response
 }
 
 export const editIngredient = (ingredientId, name, imgUrl, desc, userId) => async (dispatch) => {
@@ -65,12 +65,13 @@ export const editIngredient = (ingredientId, name, imgUrl, desc, userId) => asyn
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({name, imgUrl, desc, userId}),
+        body: JSON.stringify({ name, imgUrl, desc, userId }),
     })
     const data = await response.json();
     dispatch(editIng());
     dispatch(getIngredients());
     dispatch(getMyIngredients(data.userId));
+    return response
 }
 
 export const deleteIngredient = (ingredientId) => async (dispatch) => {
@@ -79,6 +80,7 @@ export const deleteIngredient = (ingredientId) => async (dispatch) => {
     })
     const data = await response.json();
     dispatch(deleteIng());
+    dispatch(getIngredients());
     dispatch(getMyIngredients(data.userId));
 }
 

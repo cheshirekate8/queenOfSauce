@@ -19,14 +19,12 @@ function MyIngredientsComponent() {
                 {myIngredients && myIngredients.map((ingredient) => (
                     <div id={`${ingredient.name}Div`} className="ingredientDiv">
                         <h5>{ingredient.name}
-                            <div>
                                 <EditIngredientModal currIngredient={ingredient} />
                                 <i
                                     className="fas fa-trash-alt fridgeBtns"
                                     onClick={() => dispatch(pantryActions.deleteIngredient(ingredient.id))}
                                 >
                                 </i>
-                            </div>
                         </h5>
                         <img src={ingredient.imgUrl} alt={`${ingredient.name}`} width={"48px"} height={"48px"} />
                         <p className='reciP'>{ingredient.desc}</p>
@@ -37,5 +35,4 @@ function MyIngredientsComponent() {
     );
 }
 
-export default MyIngredientsComponent
-    ;
+export default MyIngredientsComponent;

@@ -43,11 +43,10 @@ export const newFridge = (userId, name) => async dispatch => {
         method: "POST",
         body: JSON.stringify({ userId, name }),
     });
-    if (response.ok) {
-        const newFridge = await response.json();
-        dispatch(newKitchen(newFridge));
-        dispatch(getFridges(userId));
-    }
+    const newFridge = await response.json();
+    dispatch(newKitchen(newFridge));
+    dispatch(getFridges(userId));
+    return response;
 }
 
 export const deleteFridge = (fridgeId) => async (dispatch) => {
@@ -65,16 +64,11 @@ export const editFridge = (fridgeId, name) => async (dispatch) => {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({fridgeId, name}),
+        body: JSON.stringify({ fridgeId, name }),
     })
     const data = await response.json();
     dispatch(editRef());
-    const response2 = await csrfFetch(`/api/fridges/user/${data.userId}`)
-    if (response2.ok) {
-        const fridges = await response2.json();
-        dispatch(getKitchen(fridges));
-        return fridges;
-    }
+    dispatch(getFridges(data.userId))
 }
 
 

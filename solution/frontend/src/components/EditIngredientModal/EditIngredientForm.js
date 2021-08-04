@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as pantryActions from "../../store/pantry"
 
-function EditIngredientForm({ currIngredient  }) {
+function EditIngredientForm({ currIngredient, setShowModal }) {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
     const userId = sessionUser.id
@@ -11,13 +11,19 @@ function EditIngredientForm({ currIngredient  }) {
     const [desc, setDesc] = useState(currIngredient.desc)
     const [errors, setErrors] = useState([]);
 
-    console.log(currIngredient.id)
-
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
         const id = currIngredient.id;
         dispatch(pantryActions.editIngredient(id, name,imgUrl,desc,userId))
+        .then(() => {
+            setShowModal(false)
+          })
+          .catch(async (res) => {
+            const data = await res.json();
+            console.log(data)
+            if (data && data.errors) setErrors(data.errors);
+          });
     };
 
     return (
@@ -35,7 +41,6 @@ function EditIngredientForm({ currIngredient  }) {
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        required
                     />
                 </label>
                 <label>
@@ -44,7 +49,6 @@ function EditIngredientForm({ currIngredient  }) {
                         type="text"
                         value={imgUrl}
                         onChange={(e) => setImgUrl(e.target.value)}
-                        required
                     />
                 </label>
                 <label>
@@ -53,7 +57,6 @@ function EditIngredientForm({ currIngredient  }) {
                         type="text"
                         value={desc}
                         onChange={(e) => setDesc(e.target.value)}
-                        required
                     />
                 </label>
                 <button type="submit">Edit Ingredient</button>

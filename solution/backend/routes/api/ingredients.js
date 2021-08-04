@@ -1,8 +1,24 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const { User, Recipe, Ingredient, RecipeIngredients } = require("../../db/models");
+const { check } = require("express-validator");
+const { Ingredient } = require("../../db/models");
+const { handleValidationErrors } = require("../../utils/validation");
+
 const router = express.Router();
 
+const validateIngredient = [
+    check("name")
+        .isLength({ min: 3, max: 30 })
+        .withMessage('Please provide an ingredient name between 3 and 50 characters.'),
+    check("imgUrl")
+        .isURL()
+        // .isMimeType('jpg')
+        .withMessage('Please provide a valid image URL'),
+    check("desc")
+        .isLength({ min: 3, max: 50 })
+        .withMessage('Please provide a description between 3 and 100 characters.'),
+    handleValidationErrors
+]
 
 // Get a all ingredients
 router.get(
@@ -26,6 +42,7 @@ router.get(
 // Edit a single ingredient
 router.patch(
     '/:id(\\d+)',
+    validateIngredient,
     asyncHandler(async (req, res) => {
         const ingredientId = parseInt(req.params.id, 10);
         const ingredient = await Ingredient.findByPk(ingredientId);
@@ -53,6 +70,7 @@ router.get(
 // Create a new ingredient
 router.post(
     '',
+    validateIngredient,
     asyncHandler(async (req, res) => {
         const { name, imgUrl, desc, userId } = req.body;
         const ingredient = await Ingredient.create({ name, imgUrl, desc, userId });

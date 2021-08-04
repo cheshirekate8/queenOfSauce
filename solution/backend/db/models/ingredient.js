@@ -16,9 +16,27 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Ingredient.init({
-    name: DataTypes.STRING,
-    imgUrl: DataTypes.STRING,
-    desc: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING(30),
+      allowNull: false,
+      validate: {
+        len: [3, 30]
+      }
+    },
+    imgUrl: {
+      type: DataTypes.STRING(500),
+      allowNull: false,
+      validate: {
+        len: [1, 500]
+      }
+    },
+    desc: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+      validate: {
+        len: [3, 100]
+      }
+    },
     userId: DataTypes.INTEGER
   }, {
     sequelize,
