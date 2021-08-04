@@ -15,8 +15,15 @@ function EditIngredientForm({ currIngredient, setShowModal }) {
         e.preventDefault();
         setErrors([]);
         const id = currIngredient.id;
-        setShowModal(false)
         dispatch(pantryActions.editIngredient(id, name,imgUrl,desc,userId))
+        .then(() => {
+            setShowModal(false)
+          })
+          .catch(async (res) => {
+            const data = await res.json();
+            console.log(data)
+            if (data && data.errors) setErrors(data.errors);
+          });
     };
 
     return (
@@ -34,7 +41,6 @@ function EditIngredientForm({ currIngredient, setShowModal }) {
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        required
                     />
                 </label>
                 <label>
@@ -43,7 +49,6 @@ function EditIngredientForm({ currIngredient, setShowModal }) {
                         type="text"
                         value={imgUrl}
                         onChange={(e) => setImgUrl(e.target.value)}
-                        required
                     />
                 </label>
                 <label>
@@ -52,7 +57,6 @@ function EditIngredientForm({ currIngredient, setShowModal }) {
                         type="text"
                         value={desc}
                         onChange={(e) => setDesc(e.target.value)}
-                        required
                     />
                 </label>
                 <button type="submit">Edit Ingredient</button>

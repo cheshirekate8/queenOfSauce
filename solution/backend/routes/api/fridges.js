@@ -1,7 +1,7 @@
 const express = require("express");
 const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
-const { setTokenCookie, requireAuth } = require("../../utils/auth");
+// const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const { User, Fridge, Ingredient, FridgeIngredients } = require("../../db/models");
 const { handleValidationErrors } = require("../../utils/validation");
 
@@ -15,14 +15,6 @@ const validateFridge = [
         .withMessage('Please provide a fridge name between 3 and 50 characters.'),
     handleValidationErrors
 ]
-
-// const validateNewFridge = [
-
-// ];
-
-// const validateEditFridge = [
-
-// ];
 
 // Create a new fridge
 router.post(
