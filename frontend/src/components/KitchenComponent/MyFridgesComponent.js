@@ -30,7 +30,7 @@ function MyFridgesComponent() {
                         <div>
                             <EditFridgeModal currFridge={fridge} />
                             <i
-                                className="fas fa-trash-alt fridgeBtns"
+                                className="fas fa-trash-alt iconz"
                                 onClick={() => dispatch(kitchenActions.deleteFridge(fridge.id))}
                             >
                             </i>

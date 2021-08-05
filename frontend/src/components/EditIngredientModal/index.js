@@ -7,13 +7,8 @@ function EditIngredientModal({currIngredient}) {
 
   return (
     <>
-      <button
-        className='logBtns'
-        onClick={() => setShowModal(true)}
-      >
-        <i className="fas fa-edit fridgeBtns">
+        <i className="fas fa-edit iconz" onClick={() => setShowModal(true)}>
         </i>
-      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditIngredientForm currIngredient={currIngredient} setShowModal={setShowModal}/>

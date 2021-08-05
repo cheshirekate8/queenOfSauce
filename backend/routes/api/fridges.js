@@ -27,6 +27,35 @@ router.post(
     }),
 );
 
+// Joins test
+router.post(
+    '/ingredients',
+    asyncHandler(async (req, res) => {
+        const { fridgeId, ingredientId } = req.body;
+        const fridgeIng = await FridgeIngredients.create({ fridgeId, ingredientId });
+        return res.json({
+            fridgeIng,
+        });
+    }),
+    );
+
+    // Joins test
+    router.delete(
+        '/ingredients/:id(\\d+)',
+        asyncHandler(async (req, res) => {
+            // const { id } = req.body;
+        const id = parseInt(req.params.id);
+        const fridgeIng = await FridgeIngredients.destroy({
+            where : {
+                id: id
+            }
+         });
+        return res.json({
+            fridgeIng,
+        });
+    }),
+);
+
 // Get a fridge and all it's ingredients
 router.get(
     '/:id(\\d+)',

@@ -7,13 +7,8 @@ function EditFridgeModal({currFridge}) {
 
   return (
     <>
-      <button
-        className='logBtns'
-        onClick={() => setShowModal(true)}
-      >
-        <i className="fas fa-edit fridgeBtns">
+        <i className="fas fa-edit iconz" onClick={() => setShowModal(true)}>
         </i>
-      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditFridgeForm currFridge={currFridge} setShowModal={setShowModal}/>

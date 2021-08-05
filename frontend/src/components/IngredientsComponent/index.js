@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as pantryActions from "../../store/pantry"
 import './Ingredients.css'
+import '../KitchenComponent/Kitchen.css'
 import NewIngredientModal from "../NewIngredientModal";
+import AddToFridgeModal from "../AddToFridgeModal";
 
 function IngredientsComponent() {
     const dispatch = useDispatch()
@@ -26,7 +28,10 @@ function IngredientsComponent() {
             <div id='ingredientsListDiv'>
                 {ingredients && ingredients.map((ingredient) => (
                     <div id={`${ingredient.name}Div`} className="ingredientDiv">
-                        <h5>{ingredient.name}</h5>
+                        <h5>
+                            {ingredient.name}
+                            <AddToFridgeModal currIngredient={ingredient}/>
+                        </h5>
                         <img src={ingredient.imgUrl} alt={`${ingredient.name}`} width={"48px"} height={"48px"} />
                         <p className='reciP'>{ingredient.desc}</p>
                     </div>
