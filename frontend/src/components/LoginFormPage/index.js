@@ -26,9 +26,9 @@ function LoginFormPage() {
   const handleDemo = (e) => {
     e.preventDefault();
     setErrors([]);
-    setCredential('demo@user.io');
-    setPassword('password');
-    return dispatch(sessionActions.login({ credential, password }))
+    const email = 'demo@user.io';
+    const pw = 'password';
+    return dispatch(sessionActions.login({ email, pw }))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
