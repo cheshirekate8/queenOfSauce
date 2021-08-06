@@ -37,34 +37,40 @@ router.post(
             fridgeIng,
         });
     }),
-    );
+);
 
-    // Joins test
-    router.delete(
-        '/ingredients/:id(\\d+)',
-        asyncHandler(async (req, res) => {
-            // const { id } = req.body;
+// Joins test
+router.delete(
+    '/ingredients/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        // const { id } = req.body;
         const id = parseInt(req.params.id);
         const fridgeIng = await FridgeIngredients.destroy({
-            where : {
+            where: {
                 id: id
             }
-         });
+        });
         return res.json({
             fridgeIng,
         });
     }),
 );
 
-// Get a fridge and all it's ingredients
+// Get a the number of ingredients in a fridge
 router.get(
-    '/:id(\\d+)',
+    '/:fridgeId(\\d+)/ingredients/:ingId(\\d+)',
     asyncHandler(async (req, res) => {
-        const fridgeId = parseInt(req.params.id, 10);
-        const fridge = await Fridge.findByPk(fridgeId, {
-            include: Ingredient
+        const fridgeId = parseInt(req.params.fridgeId, 10);
+        const ingId = parseInt(req.params.ingId, 10);
+        const fridge = await FridgeIngredients.findAll({
+            where: {
+                fridgeId: fridgeId,
+            },
+            where: {
+                ingredientId: ingId
+            }
         });
-        return res.json(fridge)
+        return res.json(fridge.length)
     })
 )
 

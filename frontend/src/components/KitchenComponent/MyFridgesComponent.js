@@ -12,11 +12,17 @@ function MyFridgesComponent() {
     const fridges = useSelector((state) => state.kitchen.fridges)
 
     let ingredients = [];
-    if (fridges) {
-        fridges?.forEach(fridge => {
-            ingredients.push(fridge.Ingredients)
+
+    fridges?.forEach(fridge => {
+        ingredients.push(fridge.Ingredients)
+        ingredients.forEach(async (ingredientObj) => {
+            ingredientObj.forEach(async (ingredient, i) => {
+                let count = await dispatch(kitchenActions.countIngredients(fridge.id, ingredient.id))
+                ingredient['count'] = count;
+            })
         })
-    }
+    })
+
 
     return (
         <div className='kitchenDiv'>
@@ -36,10 +42,14 @@ function MyFridgesComponent() {
                             </i>
                         </div>
                     </div>
-                    {ingredients[i].map(ingredient => (
-                        <>
+                    {ingredients && ingredients[i].map(ingredient => (
+                        <div className='ingDiv'>
                             <img src={ingredient.imgUrl} alt={ingredient.name} key={`${ingredient.name}key`} />
-                        </>
+                            <div className='counterDiv'>
+                                {/* <i className="fas fa-trash-alt iconz" /> */}
+                                {ingredient.count}
+                            </div>
+                        </div>
                     ))}
                 </div>
             ))}
