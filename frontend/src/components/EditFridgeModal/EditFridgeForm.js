@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import * as kitchenActions from "../../store/kitchen"
 import { useDispatch } from "react-redux";
-import "./EditFridge.css";
 
 function EditFridgeForm({currFridge, setShowModal}) {
   const dispatch = useDispatch();
