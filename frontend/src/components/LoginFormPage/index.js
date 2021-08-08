@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
+import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import './LoginForm.css';
@@ -10,7 +11,8 @@ function LoginFormPage() {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-
+  const [demoLogin, setDemoLogin] = useState(false)
+  
   if (sessionUser) return <Redirect to="/kitchen" />;
 
   const handleSubmit = (e) => {
@@ -23,16 +25,20 @@ function LoginFormPage() {
       });
   };
 
-  const handleDemo = (e) => {
+  const handleDemo = async (e) => {
     e.preventDefault();
-    setErrors([]);
-    setCredential('demo@user.io');
-    setPassword('password');
-    return dispatch(sessionActions.login({ credential, password }))
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      });
+    // await setCredential("demo@user.io");
+    // await setPassword("password");
+    // await setErrors([]);
+    // return dispatch(sessionActions.login({ credential, password }))
+    //   .catch(async (res) => {
+    //     const data = await res.json();
+    //     if (data && data.errors) setErrors(data.errors);
+    //   });
+    const data = await dispatch(
+      sessionActions.login('demo@user.io', 'password')
+    );
+    if (data) setErrors(data);
   };
 
   return (
