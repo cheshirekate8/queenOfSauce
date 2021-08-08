@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as pantryActions from "../../store/pantry"
-import './EditIngredient.CSS'
 
 function EditIngredientForm({ currIngredient, setShowModal }) {
     const dispatch = useDispatch();
