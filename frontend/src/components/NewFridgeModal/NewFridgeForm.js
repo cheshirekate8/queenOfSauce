@@ -26,14 +26,15 @@ function NewFridgeForm({ setShowModal }) {
 
   return (
     <>
-      <h1>New Fridge</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
+      <h1 className='modalTitle'>New Fridge</h1>
+      <form onSubmit={handleSubmit} className='modalForm'>
+        {errors.length > 0 &&
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>}
+        <label className='modalLabels'>
           Name
           <input
             type="text"
@@ -41,7 +42,7 @@ function NewFridgeForm({ setShowModal }) {
             onChange={(e) => setName(e.target.value)}
           />
         </label>
-        <button type="submit">Create New Fridge</button>
+        <button type="submit" className='modalBtns'>Create New Fridge</button>
       </form>
     </>
   );

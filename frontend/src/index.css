@@ -18,7 +18,8 @@
 }
 
 body {
-  background: url("../src/media/images/background.png") no-repeat center center fixed;
+  background: url("../src/media/images/background.png") no-repeat center center
+    fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -27,14 +28,19 @@ body {
   position: relative;
   box-sizing: border-box;
   color: white;
-  font-family: 'SVThin';
+  font-family: "SVThin";
   text-shadow: black 1px 1px, black 1px 1px 3px;
   height: 100vh;
   margin: 0;
 }
 
-h1,h2,h3,h4,h5,h6 {
-  font-family: 'SVBold';
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "SVBold";
   margin: 0;
   font-weight: normal;
 }
@@ -94,3 +100,5 @@ li {
   border: none;
   cursor: pointer;
 }
+
+

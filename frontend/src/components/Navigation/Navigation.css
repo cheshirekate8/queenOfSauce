@@ -34,7 +34,7 @@ nav {
   text-decoration: none;
   font-size: 1.25em;
   padding: 5px;
-  text-shadow: black 1px 1px;
+  text-shadow: black 1px 1px, black 1px 1px 3px;
 }
 
 .navLinks:hover,
