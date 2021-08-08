@@ -23,7 +23,8 @@ function MyFridgesComponent() {
             <h1 className='kitchenTitle'>{sessionUser.username}'s Kitchen
                 <NewFridgeModal />
             </h1>
-            {fridges && fridges.map((fridge, i) => (
+            {fridges && fridges.length > 0 ?
+            (fridges && fridges.map((fridge, i) => (
                 <div className='fridgeDiv' key={`${fridge.name}key`}>
                     <div className='fridgeTitle' id={fridge.name}>
                         {fridge.name}
@@ -42,7 +43,9 @@ function MyFridgesComponent() {
                         </>
                     ))}
                 </div>
-            ))}
+            )))
+            :
+            (<div>You have no refrigerators! Create one by clicking the + sign on the right!</div>)}
         </div>
     );
 }

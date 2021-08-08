@@ -8,6 +8,7 @@ import * as pantryActions from "../../store/pantry"
 function MyIngredientsComponent() {
 
     const myIngredients = useSelector((state) => state.pantry.myIngredients)
+    const sessionUser = useSelector((state) => state.session.user);
     const dispatch = useDispatch()
 
     return (
@@ -16,7 +17,8 @@ function MyIngredientsComponent() {
                 <NewIngredientModal />
             </h1>
             <div id='ingredientsListDiv'>
-                {myIngredients && myIngredients.map((ingredient) => (
+                {myIngredients && myIngredients.length > 0 ?
+                (myIngredients.map((ingredient) => (
                     <div id={`${ingredient.name}Div`} className="ingredientDiv">
                         <h5>{ingredient.name}
                                 <EditIngredientModal currIngredient={ingredient} />
@@ -29,7 +31,10 @@ function MyIngredientsComponent() {
                         <img src={ingredient.imgUrl} alt={`${ingredient.name}`} width={"48px"} height={"48px"} />
                         <p className='reciP'>{ingredient.desc}</p>
                     </div>
-                ))}
+                )))
+                :
+                ('You have no custom ingredients! Create one by clicking the + sign on the right!')
+                }
             </div>
         </div>
     );
