@@ -7,7 +7,7 @@ function NewIngredientModal() {
 
   return (
     <>
-      <i className="fas fa-plus iconz"></i>
+      <i className="fas fa-plus iconz" onClick={() => setShowModal(true)}></i>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <NewIngredientForm setShowModal={setShowModal} />
