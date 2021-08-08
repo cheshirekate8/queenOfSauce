@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import './Kitchen.css';
 import NewFridgeModal from "../NewFridgeModal";
@@ -10,6 +10,10 @@ function MyFridgesComponent() {
     const dispatch = useDispatch()
     const sessionUser = useSelector((state) => state.session.user);
     const fridges = useSelector((state) => state.kitchen.fridges)
+
+    useEffect(() => {
+        dispatch(kitchenActions.getFridges(sessionUser?.id))
+    }, [dispatch, sessionUser?.id]);
 
     let ingredients = [];
     if (fridges) {

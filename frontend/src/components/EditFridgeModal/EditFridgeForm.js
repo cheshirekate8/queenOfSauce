@@ -38,8 +38,8 @@ function EditFridgeForm({ currFridge, setShowModal }) {
             onChange={(e) => setName(e.target.value)}
           />
         </label>
-      </form>
       <button type="submit" className="modalBtns">Edit Fridge</button>
+      </form>
     </>
   );
 }

@@ -53,7 +53,7 @@ router.patch(
     })
 )
 
-// Get a all of a user's ingredients
+// Get a all of a user's custom ingredients
 router.get(
     '/user/:id(\\d+)',
     asyncHandler(async (req, res) => {

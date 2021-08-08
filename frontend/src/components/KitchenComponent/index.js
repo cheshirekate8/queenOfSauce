@@ -18,9 +18,7 @@ function KitchenComponent() {
     useEffect(() => {
         dispatch(recipeActions.getRecipes())
         dispatch(pantryActions.getIngredients())
-        dispatch(kitchenActions.getFridges(sessionUser?.id))
-        dispatch(pantryActions.getMyIngredients(sessionUser?.id))
-    }, [dispatch, sessionUser?.id]);
+    }, [dispatch]);
 
     if (!sessionUser) return <Redirect to="/" />;
 

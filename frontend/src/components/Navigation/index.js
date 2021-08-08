@@ -24,8 +24,8 @@ function Navigation({ isLoaded }) {
 
   return (
     <nav>
-      <NavLink exact to="/" className='navLinks'>
-        <GiFarmTractor />
+      <NavLink exact to="/">
+        <GiFarmTractor className='bigIcons' />
       </NavLink>
       {isLoaded && sessionLinks}
     </nav>
