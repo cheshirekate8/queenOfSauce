@@ -62,4 +62,5 @@ router.get(
     return res.json(user)
   })
 )
+
 module.exports = router;

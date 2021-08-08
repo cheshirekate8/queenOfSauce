@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import './Kitchen.css';
 import NewIngredientModal from "../NewIngredientModal";
@@ -10,6 +10,10 @@ function MyIngredientsComponent() {
     const myIngredients = useSelector((state) => state.pantry.myIngredients)
     const sessionUser = useSelector((state) => state.session.user);
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(pantryActions.getMyIngredients(sessionUser?.id))
+    }, [dispatch, sessionUser?.id]);
 
     return (
         <div className="kitchenDiv">

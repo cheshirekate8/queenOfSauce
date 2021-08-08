@@ -45,15 +45,6 @@ h6 {
   font-weight: normal;
 }
 
-svg {
-  height: 2rem;
-  width: 2rem;
-}
-
-i {
-  font-size: 2rem;
-}
-
 li {
   list-style: none;
   padding: 2px;
@@ -101,4 +92,8 @@ li {
   cursor: pointer;
 }
 
-
+.folioIcons {
+  font-size: 2.5em;
+  color: brown;
+  padding-top: 20px;
+}

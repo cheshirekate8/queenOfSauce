@@ -31,10 +31,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu} className='logBtns'>
-        {/* <i className="fas fa-user-circle" /> */}
-        <GiFarmer />
-      </button>
+      <GiFarmer onClick={openMenu} className='bigIcons' />
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.username}</li>

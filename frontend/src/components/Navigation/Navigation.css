@@ -41,3 +41,8 @@ nav {
 .logBtns:hover {
   text-decoration: underline;
 }
+
+.bigIcons {
+  font-size: 2.5em;
+  color: white;
+}

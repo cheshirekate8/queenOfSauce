@@ -44,13 +44,13 @@ function App() {
           <h1>Kathleen Young</h1>
           <div id='aboutMeLinks'>
             <ExternalLink href='https://github.com/cheshirekate8/'>
-              <i className="fab fa-github"></i>
+              <i className="fab fa-github folioIcons"></i>
             </ExternalLink>
             <ExternalLink href='https://www.linkedin.com/in/dev-kathleen-young'>
-              <i className="fab fa-linkedin-in"></i>
+              <i className="fab fa-linkedin-in folioIcons"></i>
             </ExternalLink>
             <ExternalLink href='https://angel.co/u/kathleen-young-3'>
-              <i className="fab fa-angellist"></i>
+              <i className="fab fa-angellist folioIcons"></i>
             </ExternalLink>
             {/* <i className="fas fa-file"></i> */}
           </div>
