@@ -11,7 +11,7 @@ function EditIngredientModal({currIngredient}) {
         className='logBtns'
         onClick={() => setShowModal(true)}
       >
-        <i className="fas fa-edit fridgeBtns">
+        <i className="fas fa-edit iconz">
         </i>
       </button>
       {showModal && (
