@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import * as kitchenActions from "../../store/kitchen"
 import { useDispatch } from "react-redux";
-import "./EditFridge.css";
 
-function EditFridgeForm({currFridge, setShowModal}) {
+function EditFridgeForm({ currFridge, setShowModal }) {
   const dispatch = useDispatch();
   const [name, setName] = useState(currFridge.name);
   const [errors, setErrors] = useState([]);
@@ -12,25 +11,26 @@ function EditFridgeForm({currFridge, setShowModal}) {
     e.preventDefault();
     setErrors([]);
     dispatch(kitchenActions.editFridge(currFridge.id, name))
-    .then(() => {
-      setShowModal(false)
-    })
-    .catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
+      .then(() => {
+        setShowModal(false)
+      })
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
   };
 
   return (
     <>
-      <h1>Edit Fridge</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
+      <h1 className='modalTitle'>Edit Fridge</h1>
+      <form onSubmit={handleSubmit} className='modalForm'>
+        {errors.length > 0 &&
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>}
+        <label className='modalLabels'>
           Name
           <input
             type="text"
@@ -38,8 +38,8 @@ function EditFridgeForm({currFridge, setShowModal}) {
             onChange={(e) => setName(e.target.value)}
           />
         </label>
-        <button type="submit">Edit Fridge</button>
       </form>
+      <button type="submit" className="modalBtns">Edit Fridge</button>
     </>
   );
 }

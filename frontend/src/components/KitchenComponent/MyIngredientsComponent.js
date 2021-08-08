@@ -23,7 +23,7 @@ function MyIngredientsComponent() {
                         <h5>{ingredient.name}
                                 <EditIngredientModal currIngredient={ingredient} />
                                 <i
-                                    className="fas fa-trash-alt fridgeBtns"
+                                    className="fas fa-trash-alt iconz"
                                     onClick={() => dispatch(pantryActions.deleteIngredient(ingredient.id))}
                                 >
                                 </i>

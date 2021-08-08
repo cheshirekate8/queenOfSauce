@@ -26,7 +26,7 @@
     color: white;
     text-decoration: none;
     padding: 5px;
-    text-shadow: black 1px 1px;
+    text-shadow: black 1px 1px, black 1px 1px 3px;
 
 }
 

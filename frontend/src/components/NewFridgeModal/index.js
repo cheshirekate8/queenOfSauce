@@ -7,12 +7,7 @@ function NewFridgeModal() {
 
   return (
     <>
-      <button
-        className='logBtns'
-        onClick={() => setShowModal(true)}
-        >
-        <i className="fas fa-plus"></i>
-      </button>
+      <i className="fas fa-plus iconz" onClick={() => setShowModal(true)}></i>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <NewFridgeForm setShowModal={setShowModal}/>

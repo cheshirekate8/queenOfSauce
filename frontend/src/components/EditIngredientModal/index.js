@@ -2,21 +2,19 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import EditIngredientForm from './EditIngredientForm';
 
-function EditIngredientModal({currIngredient}) {
+function EditIngredientModal({ currIngredient }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button
-        className='logBtns'
-        onClick={() => setShowModal(true)}
-      >
-        <i className="fas fa-edit fridgeBtns">
-        </i>
-      </button>
+      <i
+        className="fas fa-edit iconz"
+        onClick={() => setShowModal(true)}>
+      </i>
       {showModal && (
+
         <Modal onClose={() => setShowModal(false)}>
-          <EditIngredientForm currIngredient={currIngredient} setShowModal={setShowModal}/>
+          <EditIngredientForm currIngredient={currIngredient} setShowModal={setShowModal} />
         </Modal>
       )}
     </>

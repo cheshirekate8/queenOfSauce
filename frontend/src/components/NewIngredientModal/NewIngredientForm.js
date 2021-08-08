@@ -15,26 +15,27 @@ function NewIngredientForm({ setShowModal }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        dispatch(pantryActions.newIngredient(name,imgUrl,desc,userId))
-        .then(() => {
-            setShowModal(false)
-          })
-          .catch(async (res) => {
-            const data = await res.json();
-            if (data && data.errors) setErrors(data.errors);
-          });
+        dispatch(pantryActions.newIngredient(name, imgUrl, desc, userId))
+            .then(() => {
+                setShowModal(false)
+            })
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
     };
 
     return (
         <>
-            <h1>New Ingredient</h1>
-            <form onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
-                    ))}
-                </ul>
-                <label>
+            <h1 className='modalTitle'>New Ingredient</h1>
+            <form onSubmit={handleSubmit} className='modalForm'>
+                {errors.length > 0 &&
+                    <ul>
+                        {errors.map((error, idx) => (
+                            <li key={idx}>{error}</li>
+                        ))}
+                    </ul>}
+                <label className='modalLabels'>
                     Name
                     <input
                         type="text"
@@ -42,7 +43,7 @@ function NewIngredientForm({ setShowModal }) {
                         onChange={(e) => setName(e.target.value)}
                     />
                 </label>
-                <label>
+                <label className='modalLabels'>
                     Image URL
                     <input
                         type="text"
@@ -50,7 +51,7 @@ function NewIngredientForm({ setShowModal }) {
                         onChange={(e) => setImgUrl(e.target.value)}
                     />
                 </label>
-                <label>
+                <label className='modalLabels'>
                     Description
                     <textarea
                         type="text"
@@ -58,7 +59,7 @@ function NewIngredientForm({ setShowModal }) {
                         onChange={(e) => setDesc(e.target.value)}
                     />
                 </label>
-                <button type="submit">Create New Ingredient</button>
+                <button type="submit" className="modalBtns">Create New Ingredient</button>
             </form>
         </>
     );

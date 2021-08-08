@@ -9,6 +9,7 @@ import KitchenComponent from './components/KitchenComponent';
 import * as sessionActions from './store/session';
 import { Modal } from './context/Modal';
 import SVme from './media/images/pnMe.png'
+import speechBubble from './media/images/pixel-speech-bubble.png'
 import { ExternalLink } from 'react-external-link';
 import LinksComponent from './components/LinksComponent';
 import RecipesComponent from './components/RecipesComponent';
@@ -32,6 +33,11 @@ function App() {
         onClick={() => setShowModal(true)}
         id='aboutMeImg'
         alt='Stardew Valley sprite of Kathleen Young' />
+      <img
+        src={speechBubble}
+        onClick={() => setShowModal(true)}
+        id='speechBubble'
+        alt='Speech bubble saying click me!' />
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <h2>Project By:</h2>
