@@ -55,6 +55,7 @@ function EditIngredientForm({ currIngredient, setShowModal }) {
                 <label className='modalLabels'>
                     Description
                     <textarea
+                        className='modalTextArea'
                         type="text"
                         value={desc}
                         onChange={(e) => setDesc(e.target.value)}
