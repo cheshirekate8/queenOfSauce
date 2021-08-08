@@ -8,11 +8,12 @@ import './LoginForm.css';
 function LoginFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [credential, setCredential] = useState("");
-  const [password, setPassword] = useState("");
+  let [credential, setCredential] = useState("");
+  let [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  const [demoLogin, setDemoLogin] = useState(false)
-  
+
+
+
   if (sessionUser) return <Redirect to="/kitchen" />;
 
   const handleSubmit = (e) => {
@@ -25,20 +26,17 @@ function LoginFormPage() {
       });
   };
 
+
   const handleDemo = async (e) => {
     e.preventDefault();
-    // await setCredential("demo@user.io");
-    // await setPassword("password");
-    // await setErrors([]);
-    // return dispatch(sessionActions.login({ credential, password }))
-    //   .catch(async (res) => {
-    //     const data = await res.json();
-    //     if (data && data.errors) setErrors(data.errors);
-    //   });
-    const data = await dispatch(
-      sessionActions.login('demo@user.io', 'password')
-    );
-    if (data) setErrors(data);
+    credential = "demo@user.io";
+    password = "password";
+    setErrors([]);
+    return dispatch(sessionActions.login({ credential, password }))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
   };
 
   return (
