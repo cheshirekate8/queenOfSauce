@@ -20,3 +20,10 @@ To run the project locally, follow the instructions below.
 Queen of Sauce is built on a Sequelize, Express, Redux, React stack. On my backend I use Express and Sequelize, and on the frontend React and Redux.
 
 ## Views
+Once app is entirely complete, I will add this!
+
+## Fututre Features
+* Custom Recipes, which a user can CRUD from their kitchen dashboard.
+* Users can add ingredients to their fridges, and are then able to "cook" those ingredients using either their custom recipes or from the recipes tab.
+* A filterable search feature.
+* Include <B>every<b> in game recipe and ingredient, with signifiers beween cannon and user-created recipes and ingredients.
