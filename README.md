@@ -1,5 +1,5 @@
-# queenOfSauce
-Queen of Sauce is a recipe planning and cooking app based in the universe of Stardew Valley.
+# Queen Of Sauce
+Queen of Sauce is a recipe planning and cooking app set in the universe of Stardew Valley, based on the town's most popular cooking program.
 
 [Live Heroku App](https://queenofsauce.herokuapp.com/)
 
@@ -26,4 +26,26 @@ Once app is entirely complete, I will add this!
 * Custom Recipes, which a user can CRUD from their kitchen dashboard.
 * Users can add ingredients to their fridges, and are then able to "cook" those ingredients using either their custom recipes or from the recipes tab.
 * A filterable search feature.
-* Include <B>every<b> in game recipe and ingredient, with signifiers beween cannon and user-created recipes and ingredients.
+* Include <b>every</b> in game recipe and ingredient, with signifiers to distingush beween cannon and user-created recipes and ingredients.
+
+## Code Brag
+
+Sequelize has an interesting feature where if two rows are identical on a joins table, except for their unique primary key, Sequelize will return ONLY one of them. To work around this logic, it took quite a few for loops but I succeeded! A nested loop was needed to be able to have access to all necessary information, and assign the count for each ingredient.
+
+```
+let ingredients = [];
+    if (fridges) {
+        fridges?.forEach(fridge => {
+            ingredients.push(fridge.Ingredients)
+            if (ingredients) {
+                ingredients.forEach(async (ingredientObj) => {
+                    ingredientObj.forEach( async (ingredient, i) => {
+                        let count = await dispatch(kitchenActions.countIngredients(fridge.id, ingredient.id))
+                        ingredient['count'] = count;
+                        console.log(ingredient)
+                    })
+                })
+            }
+        })
+    }
+```
