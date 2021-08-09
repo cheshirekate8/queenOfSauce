@@ -1,4 +1,6 @@
 # Queen Of Sauce
+![](https://steamuserimages-a.akamaihd.net/ugc/322377524433516800/ACB79DAC2A3BA4D55618597B353F624252EC3120/?imw=128&imh=128&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true)
+
 Queen of Sauce is a recipe planning and cooking app set in the universe of Stardew Valley, based on the town's most popular cooking program.
 
 [Live Heroku App](https://queenofsauce.herokuapp.com/)
