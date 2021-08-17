@@ -44,6 +44,12 @@ export const getFridges = userId => async dispatch => {
     const response = await csrfFetch(`/api/fridges/user/${userId}`)
     if (response.ok) {
         const fridges = await response.json();
+        fridges.forEach(fridge => {
+            fridge.Ingredients.forEach(async ingredient => {
+                let count = await dispatch(countIngredients(fridge.id, ingredient.id))
+                ingredient['count'] = count;
+            })
+        })
         dispatch(getKitchen(fridges));
         return fridges;
     }
