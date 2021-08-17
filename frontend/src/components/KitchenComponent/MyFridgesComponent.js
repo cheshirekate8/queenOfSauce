@@ -15,12 +15,29 @@ function MyFridgesComponent() {
         dispatch(kitchenActions.getFridges(sessionUser?.id))
     }, [dispatch, sessionUser?.id]);
 
+    // let ingredients = [];
+    // if (fridges) {
+    //     fridges?.forEach(fridge => {
+    //         ingredients.push(fridge.Ingredients)
+    //     })
+    // }
+
     let ingredients = [];
     if (fridges) {
         fridges?.forEach(fridge => {
             ingredients.push(fridge.Ingredients)
+            if (ingredients) {
+                ingredients.forEach(async (ingredientObj) => {
+                    ingredientObj.forEach( async (ingredient, i) => {
+                        let count = await dispatch(kitchenActions.countIngredients(fridge.id, ingredient.id))
+                        ingredient['count'] = count;
+                        console.log(ingredient)
+                    })
+                })
+            }
         })
     }
+
 
     return (
         <div className='kitchenDiv'>

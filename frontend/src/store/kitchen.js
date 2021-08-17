@@ -5,6 +5,8 @@ const CLEAR_KITCHEN = '/clearKitchen'
 const NEW_KITCHEN = '/newkitchen'
 const DELETE_REF = '/deletefridge'
 const EDIT_REF = '/editref'
+const ADD_TO_FRIDGE = '/addtofridge'
+const NUM_ING = '/numing'
 
 const getKitchen = payload => ({
     type: GET_KITCHEN,
@@ -27,6 +29,15 @@ const deleteRef = () => ({
 
 const editRef = () => ({
     type: EDIT_REF,
+})
+
+const addToRef = () => ({
+    type: ADD_TO_FRIDGE,
+})
+
+const numIng = (payload) => ({
+    type: NUM_ING,
+    payload
 })
 
 export const getFridges = userId => async dispatch => {
@@ -71,6 +82,24 @@ export const editFridge = (fridgeId, name) => async (dispatch) => {
     dispatch(getFridges(data.userId))
 }
 
+export const addToFridge = (fridgeId, ingredientId, userId) => async dispatch => {
+    const response = await csrfFetch("/api/fridges/ingredients", {
+        method: "POST",
+        body: JSON.stringify({ fridgeId, ingredientId }),
+    });
+    const addFridge = await response.json();
+    dispatch(addToRef(addFridge));
+    dispatch(getFridges(userId));
+    return response;
+}
+
+export const countIngredients = (fridgeId, ingredientId) => async dispatch => {
+    const response = await csrfFetch(`/api/fridges/${fridgeId}/ingredients/${ingredientId}`)
+    const counter = await response.json();
+    // console.log(counter)
+    dispatch(numIng(counter))
+    return counter;
+}
 
 const initialState = { fridges: null };
 

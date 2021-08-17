@@ -27,15 +27,50 @@ router.post(
     }),
 );
 
-// Get a fridge and all it's ingredients
-router.get(
-    '/:id(\\d+)',
+// Joins test
+router.post(
+    '/ingredients',
     asyncHandler(async (req, res) => {
-        const fridgeId = parseInt(req.params.id, 10);
-        const fridge = await Fridge.findByPk(fridgeId, {
-            include: Ingredient
+        const { fridgeId, ingredientId } = req.body;
+        const fridgeIng = await FridgeIngredients.create({ fridgeId, ingredientId });
+        return res.json({
+            fridgeIng,
         });
-        return res.json(fridge)
+    }),
+);
+
+// Joins test
+router.delete(
+    '/ingredients/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        // const { id } = req.body;
+        const id = parseInt(req.params.id);
+        const fridgeIng = await FridgeIngredients.destroy({
+            where: {
+                id: id
+            }
+        });
+        return res.json({
+            fridgeIng,
+        });
+    }),
+);
+
+// Get a the number of ingredients in a fridge
+router.get(
+    '/:fridgeId(\\d+)/ingredients/:ingId(\\d+)',
+    asyncHandler(async (req, res) => {
+        const fridgeId = parseInt(req.params.fridgeId, 10);
+        const ingId = parseInt(req.params.ingId, 10);
+        const fridge = await FridgeIngredients.findAll({
+            where: {
+                fridgeId: fridgeId,
+            },
+            where: {
+                ingredientId: ingId
+            }
+        });
+        return res.json(fridge.length)
     })
 )
 

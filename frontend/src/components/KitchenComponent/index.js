@@ -4,7 +4,6 @@ import './Kitchen.css';
 import { Redirect } from "react-router-dom";
 import MyIngredientsComponent from "./MyIngredientsComponent";
 import MyFridgesComponent from "./MyFridgesComponent";
-import * as kitchenActions from "../../store/kitchen";
 import * as recipeActions from "../../store/cookbook"
 import * as pantryActions from "../../store/pantry"
 
