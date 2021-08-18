@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   FridgeIngredients.init({
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true},
     fridgeId: DataTypes.INTEGER,
     ingredientId: DataTypes.INTEGER
   }, {

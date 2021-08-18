@@ -39,6 +39,53 @@ router.get(
     })
 )
 
+// Add Ingredient to fridge
+router.post(
+    '/ingredients',
+    asyncHandler(async (req, res) => {
+        const { fridgeId, ingredientId } = req.body;
+        const fridgeIng = await FridgeIngredients.create({ fridgeId, ingredientId });
+        return res.json({
+            fridgeIng,
+        });
+    }),
+);
+// Remove ingredient from fridge
+router.delete(
+    '/ingredients/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        // const { id } = req.body;
+        const id = parseInt(req.params.id);
+        const fridgeIng = await FridgeIngredients.destroy({
+            where: {
+                id: id
+            }
+        });
+        return res.json({
+            fridgeIng,
+        });
+    }),
+);
+
+// Get a the number of ingredients in a fridge
+router.get(
+    '/:fridgeId(\\d+)/ingredients/:ingId(\\d+)',
+    asyncHandler(async (req, res) => {
+        const fridgeId = parseInt(req.params.fridgeId, 10);
+        const ingId = parseInt(req.params.ingId, 10);
+        const fridge = await FridgeIngredients.findAll({
+            where: {
+                fridgeId: fridgeId,
+            },
+            where: {
+                ingredientId: ingId
+            }
+        });
+        return res.json(fridge.length)
+    })
+)
+
+
 // Get all of a users fridges and all their ingredients
 router.get(
     '/user/:id(\\d+)',
@@ -47,9 +94,7 @@ router.get(
         const user = await User.findByPk(userId, {
             include: {
                 model: Fridge,
-                include: {
-                    model: Ingredient
-                }
+                include: Ingredient
             }
         });
 
@@ -58,7 +103,6 @@ router.get(
 
 
 
-        
         return res.json(user.Fridges)
     })
 )
