@@ -4,6 +4,7 @@ const asyncHandler = require("express-async-handler");
 // const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const { User, Fridge, Ingredient, FridgeIngredients } = require("../../db/models");
 const { handleValidationErrors } = require("../../utils/validation");
+const ingredient = require("../../db/models/ingredient");
 
 const router = express.Router();
 
@@ -50,6 +51,21 @@ router.get(
                 include: Ingredient
             }
         });
+        // return res.json(user.Fridges)
+        // let tester = res.json(user.Fridges)
+        user.Fridges.forEach((fridge) => {
+            fridge.dataValues.Ingredients.forEach(async (ingredient) => {
+                console.log(ingredient.dataValues)
+                const count = await FridgeIngredients.findAll({
+                    where : {
+                        fridgeId : fridge.dataValues.id,
+                        ingredientId : ingredient.dataValues.id
+                    }
+                })
+                ingredient.dataValues['count'] = count.length
+                console.log(ingredient.dataValues)
+            })
+        })
         return res.json(user.Fridges)
     })
 )
