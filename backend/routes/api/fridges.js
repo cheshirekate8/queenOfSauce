@@ -47,7 +47,10 @@ router.get(
         const user = await User.findByPk(userId, {
             include: {
                 model: Fridge,
-                include: Ingredient
+                include: {
+                    model: FridgeIngredients,
+                    include: Ingredient
+                }
             }
         });
         return res.json(user.Fridges)

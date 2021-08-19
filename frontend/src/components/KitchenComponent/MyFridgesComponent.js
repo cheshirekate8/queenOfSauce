@@ -15,12 +15,16 @@ function MyFridgesComponent() {
         dispatch(kitchenActions.getFridges(sessionUser?.id))
     }, [dispatch, sessionUser?.id]);
 
-    let ingredients = [];
-    if (fridges) {
-        fridges?.forEach(fridge => {
-            ingredients.push(fridge.Ingredients)
-        })
-    }
+    // let ingredients = [];
+    // if (fridges) {
+    //     fridges?.forEach(fridge => {
+    //         ingredients.push(fridge.Ingredients)
+    //         // fridge.FridgeIngredients.forEach(ingredient => {
+    //         //     ingredients.push(ingredient.Ingredient.name)
+    //         // })
+    //     })
+    // }
+    // console.log(ingredients)
 
     return (
         <div className='kitchenDiv'>
@@ -41,9 +45,10 @@ function MyFridgesComponent() {
                             </i>
                         </div>
                     </div>
-                    {ingredients[i].map(ingredient => (
+                    {fridge.FridgeIngredients.map(ingredient => (
                         <>
-                            <img src={ingredient.imgUrl} alt={ingredient.name} key={`${ingredient.name}key`} />
+                            {console.log(ingredient.Ingredient)}
+                            <img src={ingredient.Ingredient.imgUrl} alt={ingredient.Ingredient.name} key={`${ingredient.Ingredient.name}key`} />
                         </>
                     ))}
                 </div>
