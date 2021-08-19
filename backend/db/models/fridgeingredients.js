@@ -17,10 +17,26 @@ module.exports = (sequelize, DataTypes) => {
   FridgeIngredients.init({
     fridgeId: DataTypes.INTEGER,
     ingredientId: DataTypes.INTEGER,
-    quantity: DataTypes.INTEGER
+    quantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+        validate: {
+          min: 1,
+          max: 999
+        }
+    }
   }, {
     sequelize,
     modelName: 'FridgeIngredients',
   });
   return FridgeIngredients;
 };
+
+
+// name: {
+//   type: DataTypes.STRING(50),
+//   allowNull: false,
+//   validate: {
+//     len: [3, 50]
+//   }
+// },

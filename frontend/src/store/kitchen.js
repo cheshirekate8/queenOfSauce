@@ -5,6 +5,9 @@ const CLEAR_KITCHEN = '/clearKitchen'
 const NEW_KITCHEN = '/newkitchen'
 const DELETE_REF = '/deletefridge'
 const EDIT_REF = '/editref'
+const ADD_TO_FRIDGE = '/addtofridge'
+const EDIT_QUANTITY = '/editquantity'
+const DELETE_FROM_FRIDGE = '/deletefromfridge'
 
 const getKitchen = payload => ({
     type: GET_KITCHEN,
@@ -22,7 +25,6 @@ const newKitchen = payload => ({
 
 const deleteRef = () => ({
     type: DELETE_REF,
-
 })
 
 const editRef = () => ({

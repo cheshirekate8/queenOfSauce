@@ -1,7 +1,6 @@
 const express = require("express");
 const { check } = require("express-validator");
 const asyncHandler = require("express-async-handler");
-// const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const { User, Fridge, Ingredient, FridgeIngredients } = require("../../db/models");
 const { handleValidationErrors } = require("../../utils/validation");
 
