@@ -31,6 +31,21 @@ const editRef = () => ({
     type: EDIT_REF,
 })
 
+const addToRef = () => ({
+    type: ADD_TO_FRIDGE,
+})
+
+export const addToFridge = (ingredientId, fridgeId, quantity, userId) => async dispatch => {
+    const response = await csrfFetch("/api/fridgeingredients", {
+        method: "POST",
+        body: JSON.stringify({ ingredientId, fridgeId, quantity }),
+    });
+    const addFridge = await response.json();
+    dispatch(addToRef(addFridge));
+    dispatch(getFridges(userId));
+    return response;
+}
+
 export const getFridges = userId => async dispatch => {
     const response = await csrfFetch(`/api/fridges/user/${userId}`)
     if (response.ok) {
