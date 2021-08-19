@@ -5,6 +5,9 @@ const CLEAR_KITCHEN = '/clearKitchen'
 const NEW_KITCHEN = '/newkitchen'
 const DELETE_REF = '/deletefridge'
 const EDIT_REF = '/editref'
+const ADD_TO_FRIDGE = '/addtofridge'
+const EDIT_QUANTITY = '/editquantity'
+const DELETE_FROM_FRIDGE = '/deletefromfridge'
 
 const getKitchen = payload => ({
     type: GET_KITCHEN,
@@ -22,12 +25,45 @@ const newKitchen = payload => ({
 
 const deleteRef = () => ({
     type: DELETE_REF,
-
 })
 
 const editRef = () => ({
     type: EDIT_REF,
 })
+
+const addToRef = () => ({
+    type: ADD_TO_FRIDGE,
+})
+
+const editQuan = () => ({
+    type: EDIT_QUANTITY,
+})
+
+const delFromFridge = () => ({
+    type: DELETE_FROM_FRIDGE,
+})
+
+export const addToFridge = (ingredientId, fridgeId, quantity, userId) => async dispatch => {
+    const response = await csrfFetch("/api/fridgeingredients", {
+        method: "POST",
+        body: JSON.stringify({ ingredientId, fridgeId, quantity }),
+    });
+    const addFridge = await response.json();
+    dispatch(addToRef(addFridge));
+    dispatch(getFridges(userId));
+    return response;
+}
+
+export const editQuantity = ( fridgeIngredientId, quantity, userId ) => async dispatch => {
+    const response = await csrfFetch("/api/fridgeingredients", {
+        method: "PATCH",
+        body: JSON.stringify({ fridgeIngredientId, quantity }),
+    });
+    const edited = await response.json();
+    dispatch(editQuan(edited));
+    dispatch(getFridges(userId));
+    return response;
+}
 
 export const getFridges = userId => async dispatch => {
     const response = await csrfFetch(`/api/fridges/user/${userId}`)
@@ -56,6 +92,16 @@ export const deleteFridge = (fridgeId) => async (dispatch) => {
     const data = await response.json();
     dispatch(deleteRef());
     dispatch(getFridges(data.userId));
+}
+
+export const deleteFromFridge = (fridgeIngredientId, userId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/fridgeingredients/${fridgeIngredientId}`, {
+        method: 'DELETE'
+    })
+    const data = await response.json();
+    console.log(data)
+    dispatch(delFromFridge());
+    dispatch(getFridges(userId));
 }
 
 export const editFridge = (fridgeId, name) => async (dispatch) => {

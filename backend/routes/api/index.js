@@ -4,6 +4,7 @@ const usersRouter = require("./users.js");
 const fridgesRouter = require("./fridges.js");
 const recipesRouter = require("./recipes.js")
 const ingredientRouter = require("./ingredients.js")
+const fridgeingredientsRouter = require("./fridgeingredients.js")
 
 // // GET /api/set-token-cookie
 // const asyncHandler = require('express-async-handler');
@@ -48,5 +49,6 @@ router.use("/users", usersRouter);
 router.use("/fridges", fridgesRouter)
 router.use("/recipes", recipesRouter)
 router.use("/ingredients", ingredientRouter)
+router.use("/fridgeingredients", fridgeingredientsRouter)
 
 module.exports = router;
