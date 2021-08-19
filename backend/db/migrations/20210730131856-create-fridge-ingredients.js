@@ -16,6 +16,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'Ingredients' }
       },
+      quantity: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

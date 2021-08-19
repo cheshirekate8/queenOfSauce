@@ -24,11 +24,11 @@ nav {
 .logBtns {
   background: none;
   border: none;
-  cursor: pointer;
 }
 
 .navLinks,
 .logBtns {
+  cursor: pointer;
   font-family: 'SVThin';
   color: white;
   text-decoration: none;
@@ -45,4 +45,5 @@ nav {
 .bigIcons {
   font-size: 2.5em;
   color: white;
+  cursor: pointer;
 }

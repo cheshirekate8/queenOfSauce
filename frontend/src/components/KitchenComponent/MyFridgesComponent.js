@@ -32,29 +32,32 @@ function MyFridgesComponent() {
                 <NewFridgeModal />
             </h1>
             {fridges && fridges.length > 0 ?
-            (fridges && fridges.map((fridge, i) => (
-                <div className='fridgeDiv' key={`${fridge.name}key`}>
-                    <div className='fridgeTitle' id={fridge.name}>
-                        {fridge.name}
-                        <div>
-                            <EditFridgeModal currFridge={fridge} />
-                            <i
-                                className="fas fa-trash-alt iconz"
-                                onClick={() => dispatch(kitchenActions.deleteFridge(fridge.id))}
-                            >
-                            </i>
+                (fridges && fridges.map((fridge, i) => (
+                    <div className='fridgeDiv' key={`${fridge.name}key`}>
+                        <div className='fridgeTitle' id={fridge.name}>
+                            {fridge.name}
+                            <div>
+                                <EditFridgeModal currFridge={fridge} />
+                                <i
+                                    className="fas fa-trash-alt iconz"
+                                    onClick={() => dispatch(kitchenActions.deleteFridge(fridge.id))}
+                                >
+                                </i>
+                            </div>
+                        </div>
+                        <div className="ingDiv">
+                            {fridge.FridgeIngredients.map(ingredient => (
+                                <div className="oneIngDiv">
+                                    <img src={ingredient.Ingredient.imgUrl} alt={ingredient.Ingredient.name} key={`${ingredient.Ingredient.name}key`} />
+                                    <div className="ingCount"onClick={() => console.log('edit', ingredient.id)}>{ingredient.quantity}</div>
+                                    <div className="ingDel" onClick={() => console.log('delete', ingredient.id)}>x</div>
+                                </div>
+                            ))}
                         </div>
                     </div>
-                    {fridge.FridgeIngredients.map(ingredient => (
-                        <>
-                            {console.log(ingredient.Ingredient)}
-                            <img src={ingredient.Ingredient.imgUrl} alt={ingredient.Ingredient.name} key={`${ingredient.Ingredient.name}key`} />
-                        </>
-                    ))}
-                </div>
-            )))
-            :
-            (<div>You have no refrigerators! Create one by clicking the + sign on the right!</div>)}
+                )))
+                :
+                (<div>You have no refrigerators! Create one by clicking the + sign on the right!</div>)}
         </div>
     );
 }
