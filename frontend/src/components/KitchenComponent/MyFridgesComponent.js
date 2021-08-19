@@ -15,17 +15,6 @@ function MyFridgesComponent() {
         dispatch(kitchenActions.getFridges(sessionUser?.id))
     }, [dispatch, sessionUser?.id]);
 
-    // let ingredients = [];
-    // if (fridges) {
-    //     fridges?.forEach(fridge => {
-    //         ingredients.push(fridge.Ingredients)
-    //         // fridge.FridgeIngredients.forEach(ingredient => {
-    //         //     ingredients.push(ingredient.Ingredient.name)
-    //         // })
-    //     })
-    // }
-    // console.log(ingredients)
-
     return (
         <div className='kitchenDiv'>
             <h1 className='kitchenTitle'>{sessionUser.username}'s Kitchen
