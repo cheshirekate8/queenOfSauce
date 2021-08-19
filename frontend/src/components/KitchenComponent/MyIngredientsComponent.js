@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import './Kitchen.css';
 import NewIngredientModal from "../NewIngredientModal";
 import EditIngredientModal from "../EditIngredientModal";
+import AddToFridgeModal from "../AddToFridgeModal"
 import * as pantryActions from "../../store/pantry"
 
 function MyIngredientsComponent() {
@@ -31,6 +32,7 @@ function MyIngredientsComponent() {
                                     onClick={() => dispatch(pantryActions.deleteIngredient(ingredient.id))}
                                 >
                                 </i>
+                                <AddToFridgeModal currIngredient={ingredient} />
                         </h5>
                         <img src={ingredient.imgUrl} alt={`${ingredient.name}`} width={"48px"} height={"48px"} />
                         <p className='reciP'>{ingredient.desc}</p>

@@ -35,6 +35,14 @@ const addToRef = () => ({
     type: ADD_TO_FRIDGE,
 })
 
+const editQuan = () => ({
+    type: EDIT_QUANTITY,
+})
+
+const delFromFridge = () => ({
+    type: DELETE_FROM_FRIDGE,
+})
+
 export const addToFridge = (ingredientId, fridgeId, quantity, userId) => async dispatch => {
     const response = await csrfFetch("/api/fridgeingredients", {
         method: "POST",
@@ -42,6 +50,17 @@ export const addToFridge = (ingredientId, fridgeId, quantity, userId) => async d
     });
     const addFridge = await response.json();
     dispatch(addToRef(addFridge));
+    dispatch(getFridges(userId));
+    return response;
+}
+
+export const editQuantity = ( fridgeIngredientId, quantity, userId ) => async dispatch => {
+    const response = await csrfFetch("/api/fridgeingredients", {
+        method: "PATCH",
+        body: JSON.stringify({ fridgeIngredientId, quantity }),
+    });
+    const edited = await response.json();
+    dispatch(editQuan(edited));
     dispatch(getFridges(userId));
     return response;
 }
@@ -73,6 +92,16 @@ export const deleteFridge = (fridgeId) => async (dispatch) => {
     const data = await response.json();
     dispatch(deleteRef());
     dispatch(getFridges(data.userId));
+}
+
+export const deleteFromFridge = (fridgeIngredientId, userId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/fridgeingredients/${fridgeIngredientId}`, {
+        method: 'DELETE'
+    })
+    const data = await response.json();
+    console.log(data)
+    dispatch(delFromFridge());
+    dispatch(getFridges(userId));
 }
 
 export const editFridge = (fridgeId, name) => async (dispatch) => {

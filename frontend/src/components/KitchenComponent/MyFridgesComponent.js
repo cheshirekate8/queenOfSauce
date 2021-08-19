@@ -4,6 +4,7 @@ import './Kitchen.css';
 import NewFridgeModal from "../NewFridgeModal";
 import EditFridgeModal from "../EditFridgeModal";
 import * as kitchenActions from "../../store/kitchen";
+import EditQuantityModal from "../EditQuantityModal";
 
 function MyFridgesComponent() {
 
@@ -37,9 +38,14 @@ function MyFridgesComponent() {
                         <div className="ingDiv">
                             {fridge.FridgeIngredients.map(ingredient => (
                                 <div className="oneIngDiv">
-                                    <img src={ingredient.Ingredient.imgUrl} alt={ingredient.Ingredient.name} key={`${ingredient.Ingredient.name}key`} />
-                                    <div className="ingCount"onClick={() => console.log('edit', ingredient.id)}>{ingredient.quantity}</div>
-                                    <div className="ingDel" onClick={() => console.log('delete', ingredient.id)}>x</div>
+                                    <img
+                                        src={ingredient.Ingredient.imgUrl}
+                                        alt={ingredient.Ingredient.name}
+                                        key={`${ingredient.Ingredient.name}key`}
+                                        width={"48px"} height={"48px"}
+                                    />
+                                    <EditQuantityModal currIngredient={ingredient} />
+                                    <div className="ingDel" onClick={() => dispatch(kitchenActions.deleteFromFridge(ingredient.id, sessionUser.id))}>x</div>
                                 </div>
                             ))}
                         </div>
