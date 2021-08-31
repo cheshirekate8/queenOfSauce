@@ -104,17 +104,10 @@ module.exports = {
         desc: "The flower grows in a sphere to invite as many butterflies as possible."
       },
       {
-        name: "Dookie",
-        imgUrl: "https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/68db6faf42df90d.png",
-        desc: "Known for his appearance in Blink182's punk-rock album.",
-        userId: 1
+        name: "Blue",
+        imgUrl: "https",
+        desc: "The"
       },
-      {
-        name: "Meat",
-        imgUrl: "http://pixeljoint.com/files/icons/full/iaza146875405811001.gif",
-        desc: "Fun fact: Everyone in Stardew Valley is pescatarian.",
-        userId: 1
-      }
     ], {});
   },
 
