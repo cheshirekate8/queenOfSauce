@@ -11,11 +11,10 @@
         "sequelize": "npm run --prefix backend sequelize",
         "sequelize-cli": "npm run --prefix backend sequelize-cli",
         "start": "npm start --prefix backend"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "sequelize-cli": "^6.2.0"
-    }
+      },
+      "keywords": [],
+      "author": "",
+      "license": "ISC",
+      "dependencies": {
+      }
 }

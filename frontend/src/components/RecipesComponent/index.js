@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as recipeActions from "../../store/cookbook";
+import CookModal from "../CookModal";
 import './Recipes.css';
 
 function RecipesComponent() {
@@ -40,6 +41,7 @@ function RecipesComponent() {
                                     <p className='reciP'>{ingredient.name}</p>
                                 ))}
                             </div>
+                            <CookModal recipe={recipe}/>
                         </div>
                     ))}
                 </div>

@@ -26,12 +26,15 @@ router.post(
     }),
 );
 
-// Get a fridge and all it's ingredients
+// Return an array of a fridge's ingredients
 router.get(
     '/:id(\\d+)',
     asyncHandler(async (req, res) => {
         const fridgeId = parseInt(req.params.id, 10);
-        const fridge = await Fridge.findByPk(fridgeId, {
+        const fridge = await FridgeIngredients.findAll({
+            where: {
+                fridgeId: fridgeId
+            },
             include: Ingredient
         });
         return res.json(fridge)
