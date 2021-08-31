@@ -1,11 +1,23 @@
 import { csrfFetch } from "./csrf.js";
+import { getOneFridgesIngredients } from "./kitchen.js";
 
 const GET_RECIPES = '/recipes'
+const COOK_FUNC = '/cook'
 
 const getRec = (list) => ({
     type: GET_RECIPES,
     list
 })
+
+// export const cook = (fridgeId, recipeId) => async dispatch => {
+//     // const fridgeingredients = await dispatch(getOneFridgesIngredients(fridgeId))
+
+//     const response = await csrfFetch(`/api/recipes/${recipeId}`)
+//     if (response.ok) {
+//         const recipe = await response.json();
+//         return recipe
+//     }
+// }
 
 export const getRecipes = () => async dispatch => {
     const response = await csrfFetch('/api/recipes')

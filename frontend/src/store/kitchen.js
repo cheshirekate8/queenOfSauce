@@ -10,6 +10,8 @@ const EDIT_QUANTITY = '/editquantity'
 const DELETE_FROM_FRIDGE = '/deletefromfridge'
 const GET_ONE_FRIDGE_INGS = '/onefridgeing'
 
+
+
 const getKitchen = payload => ({
     type: GET_KITCHEN,
     payload

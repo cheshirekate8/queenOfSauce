@@ -4,7 +4,7 @@ const { Recipe, Ingredient } = require("../../db/models");
 const router = express.Router();
 
 
-// Get a recipe and all it's ingredients
+// Get all recipes
 router.get(
     '/',
     asyncHandler(async (req, res) => {
@@ -15,17 +15,17 @@ router.get(
     })
 )
 
-// // Get a recipe and all it's ingredients
-// router.get(
-//     '/:id(\\d+)',
-//     asyncHandler(async (req, res) => {
-//         const recipeId = parseInt(req.params.id, 10);
-//         const recipe = await Recipe.findByPk(recipeId, {
-//             include: Ingredient
-//         });
-//         return res.json(recipe)
-//     })
-// )
+// Get a recipe and all it's ingredients
+router.get(
+    '/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        const recipeId = parseInt(req.params.id, 10);
+        const recipe = await Recipe.findByPk(recipeId, {
+            include: Ingredient
+        });
+        return res.json(recipe)
+    })
+)
 
 // // Create a new recipe
 // router.post(

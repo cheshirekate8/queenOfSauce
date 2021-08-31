@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as kitchenActions from "../../store/kitchen"
+import { cook } from "../../store/cookbook";
 import { useDispatch, useSelector } from "react-redux";
 
 function CookForm({ setShowModal, recipe }) {
@@ -22,9 +23,9 @@ function CookForm({ setShowModal, recipe }) {
         // console.log(ingArray)
         // console.log(currFridge)
         recipe.Ingredients.forEach(recIng => {
-            console.log('RECIPE ING ===>', recIng)
+            // console.log('RECIPE ING ===>', recIng)
             ingArray.forEach(refIng => {
-                console.log('FRIDGE ING ===>', refIng)
+                // console.log('FRIDGE ING ===>', refIng)
                 if (recIng.id === refIng.Ingredient.id) {
                     testArr.push(true)
                 }
@@ -34,23 +35,43 @@ function CookForm({ setShowModal, recipe }) {
         if (testArr.length === recipe.Ingredients.length) {
             anotherTestArr.push('Can Cook')
             setShowCookButton(true)
-            console.log(true)
             return true
         } else {
             anotherTestArr.push('Cant cook')
             setShowCookButton(false)
-            console.log(false)
             return false
         }
 
     };
 
-    const handleSubmit = (e) => {
-        console.log('yaaaay')
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const ingArray = await dispatch(kitchenActions.getOneFridgesIngredients(currFridge))
+        // console.log(ingArray)
+        // console.log(currFridge)
+        recipe.Ingredients.forEach(recIng => {
+            // console.log('RECIPE ING ===>', recIng)
+            ingArray.forEach(refIng => {
+                // console.log('FRIDGE ING ===>', refIng)
+                if (recIng.id === refIng.Ingredient.id) {
+                    let newQuantity = refIng.quantity - 1
+                    // console.log('NEW QUANTITY OF ', refIng.Ingredient.name, ' ', newQuantity)
+                    // console.log(refIng)
+                    if (newQuantity === 0) {
+                        dispatch(kitchenActions.deleteFromFridge(refIng.id))
+                    } else {
+                        dispatch(kitchenActions.editQuantity(refIng.id, newQuantity, sessionUser.id))
+                        //edit the quantity
+                    }
+                }
+            })
+        })
+        //HERE WE ADD THE COOKED THING TO THE FRIDGE AS AN INGREDIENT. MUST REDO ALL THE SEEDS NOW.
+        setShowModal(false)
     }
 
     let checker = async () => await checkIf(currFridge, recipe)
-    console.log("CHECKER ======> ", checker())
+    checker();
 
     return (
         <>
