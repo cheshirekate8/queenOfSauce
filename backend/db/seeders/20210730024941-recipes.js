@@ -185,115 +185,225 @@ module.exports = {
        desc: "Full of antioxidants."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Eggplant Parmesan",
+       imgUrl: "https://stardewvalleywiki.com/File:Eggplant_Parmesan.png",
+       desc: "	Tangy, cheesy, and wonderful."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Rice Pudding",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/e/ec/Rice_Pudding.png",
+       desc: "It's creamy, sweet, and fun to eat."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Ice Cream",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/5/5d/Ice_Cream.png",
+       desc: "It's hard to find someone who doesn't like this."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Blueberry Tart",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/9/9b/Blueberry_Tart.png",
+       desc: "It's subtle and refreshing."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Autumn's Bounty",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/f/f4/Autumn%27s_Bounty.png",
+       desc: "A taste of the season."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Pumpkin Soup",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/5/59/Pumpkin_Soup.png",
+       desc: "A seasonal favorite."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Super Meal",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/d/d2/Super_Meal.png",
+       desc: "It's a really energizing meal."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Cranberry Sauce",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/0/0b/Cranberry_Sauce.png",
+       desc: "A festive treat."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Stuffing",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/9/9a/Stuffing.png",
+       desc: "Ahh... the smell of warm bread and sage."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Farmer's Lunch",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/7/79/Farmer%27s_Lunch.png",
+       desc: "This'll keep you going."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Survival Burger",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/8/87/Survival_Burger.png",
+       desc: "A convenient snack for the explorer."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Dish O' The Sea",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/f/ff/Dish_O%27_The_Sea.png",
+       desc: "This'll keep you warm in the cold sea air."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Miner's Treat",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/1/12/Miner%27s_Treat.png",
+       desc: "This should keep your energy up."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Roots Platter",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/e/e0/Roots_Platter.png",
+       desc: "This'll get you digging for more."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Triple Shot Espresso",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/3/36/Triple_Shot_Espresso.png",
+       desc: "It's more potent than regular coffee!"
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Seafoam Pudding",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/3/33/Seafoam_Pudding.png",
+       desc: "This briny pudding will really get you into the maritime mindset!"
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Algae Soup",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/5/53/Algae_Soup.png",
+       desc: "It's a little slimy."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Pale Broth",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/7/7e/Pale_Broth.png",
+       desc: "A delicate broth with a hint of sulfur."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Plum Pudding",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/a/a0/Plum_Pudding.png",
+       desc: "A traditional holiday treat."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Artichoke Dip",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/7/77/Artichoke_Dip.png",
+       desc: "It's cool and refreshing."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Stir Fry",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/e/ed/Stir_Fry.png",
+       desc: "Julienned vegetables on a bed of rice."
      },
        {
-       name: "AAAAA",
-       imgUrl: "https",
-       desc: "AAAAA"
+       name: "Roasted Hazelnuts",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/1/18/Roasted_Hazelnuts.png",
+       desc: "The roasting process creates a rich forest flavor."
      },
+       {
+       name: "Pumpkin Pie",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/7/7d/Pumpkin_Pie.png",
+       desc: "Silky pumpkin cream in a flakey crust."
+     },
+       {
+       name: "Radish Salad",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/b/b9/Radish_Salad.png",
+       desc: "The radishes are so crisp!"
+     },
+       {
+       name: "Fruit Salad",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/9/9e/Fruit_Salad.png",
+       desc: "A delicious combination of summer fruits."
+     },
+       {
+       name: "Blackberry Cobbler",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/7/70/Blackberry_Cobbler.png",
+       desc: "There's nothing quite like it."
+     },
+       {
+       name: "Cranberry Candy",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/9/9d/Cranberry_Candy.png",
+       desc: "It's sweet enough to mask the bitter fruit."
+     },
+       {
+       name: "Bruschetta",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/c/ca/Bruschetta.png",
+       desc: "Roasted tomatoes on a crisp white bread."
+     },
+       {
+       name: "Coleslaw",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/e/e1/Coleslaw.png",
+       desc: "It's light, fresh and very healthy."
+     },
+       {
+       name: "Fiddlehead Risotto",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/2/2d/Fiddlehead_Risotto.png",
+       desc: "A creamy rice dish served with sauteed fern heads. It's a little bland."
+     },
+       {
+       name: "Poppyseed Muffin",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/8/8e/Poppyseed_Muffin.png",
+       desc: "It has a soothing effect."
+     },
+       {
+       name: "Chowder",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/9/95/Chowder.png",
+       desc: "A perfect way to warm yourself after a cold night at sea."
+     },
+       {
+       name: "Fish Stew",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/6/6f/Fish_Stew.png",
+       desc: "It smells a lot like the sea. Tastes better, though."
+     },
+       {
+       name: "Escargot",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/7/78/Escargot.png",
+       desc: "Butter-soaked snails cooked to perfection."
+     },
+       {
+       name: "Lobster Bisque",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/0/0a/Lobster_Bisque.png",
+       desc: "This delicate soup is a secret family recipe of Willy's."
+     },
+       {
+       name: "Maple Bar",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/1/18/Maple_Bar.png",
+       desc: "It's a sweet doughnut topped with a rich maple glaze."
+     },
+       {
+       name: "Crab Cakes",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/7/70/Crab_Cakes.png",
+       desc: "Crab, bread crumbs, and egg formed into patties then fried to a golden brown."
+     },
+       {
+       name: "Shrimp Cocktail",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/8/8e/Shrimp_Cocktail.png",
+       desc: "A sumptuous appetizer made with freshly-caught shrimp."
+     },
+       {
+       name: "Ginger Ale",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/1/1a/Ginger_Ale.png",
+       desc: "A zesty soda known for its soothing effect on the stomach."
+     },
+       {
+       name: "Banana Pudding",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/4/40/Banana_Pudding.png",
+       desc: "A creamy dessert with a wonderful tropical flavor."
+     },
+       {
+       name: "Mango Sticky Rice",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/6/6e/Mango_Sticky_Rice.png",
+       desc: "Sweet mango and coconut transforms this rice into something very special."
+     },
+       {
+       name: "Poi",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/f/f1/Poi.png",
+       desc: "A traditional food with a delicate, sweet flavor when eaten fresh."
+     },
+       {
+       name: "Tropical Curry",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/3/32/Tropical_Curry.png",
+       desc: "An exotic, fragrant curry served in a pineapple bowl."
+     },
+       {
+       name: "Squid Ink Ravioli",
+       imgUrl: "https://stardewvalleywiki.com/mediawiki/images/8/86/Squid_Ink_Ravioli.png",
+       desc: "Temporarily protects from debuffs."
+     }
     ], {});
 
   },
