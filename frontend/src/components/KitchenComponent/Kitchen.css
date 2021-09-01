@@ -27,6 +27,7 @@
 
 .ingDiv {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .oneIngDiv {
