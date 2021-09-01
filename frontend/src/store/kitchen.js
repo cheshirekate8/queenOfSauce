@@ -8,6 +8,9 @@ const EDIT_REF = '/editref'
 const ADD_TO_FRIDGE = '/addtofridge'
 const EDIT_QUANTITY = '/editquantity'
 const DELETE_FROM_FRIDGE = '/deletefromfridge'
+const GET_ONE_FRIDGE_INGS = '/onefridgeing'
+
+
 
 const getKitchen = payload => ({
     type: GET_KITCHEN,
@@ -41,6 +44,10 @@ const editQuan = () => ({
 
 const delFromFridge = () => ({
     type: DELETE_FROM_FRIDGE,
+})
+
+const getOneFridgeIng = () => ({
+    type: GET_ONE_FRIDGE_INGS
 })
 
 export const addToFridge = (ingredientId, fridgeId, quantity, userId) => async dispatch => {
@@ -115,6 +122,15 @@ export const editFridge = (fridgeId, name) => async (dispatch) => {
     const data = await response.json();
     dispatch(editRef());
     dispatch(getFridges(data.userId))
+}
+
+export const getOneFridgesIngredients = (fridgeId) => async (dispatch) => {
+    const response = await csrfFetch(`/api/fridges/${fridgeId}`)
+    if (response.ok) {
+        const oneFridgesIng = await response.json();
+        dispatch(getOneFridgeIng(oneFridgesIng));
+        return oneFridgesIng;
+    }
 }
 
 

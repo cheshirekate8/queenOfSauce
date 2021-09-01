@@ -21,10 +21,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      userId: {
-        type: Sequelize.INTEGER,
-        references: { model: 'Users' }
-      },
       createdAt: {
         allowNull: false,
         defaultValue: Sequelize.fn("now"),

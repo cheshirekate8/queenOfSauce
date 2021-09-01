@@ -24,7 +24,11 @@ const validateIngredient = [
 router.get(
     '',
     asyncHandler(async (req, res) => {
-        const ingredients = await Ingredient.findAll();
+        const ingredients = await Ingredient.findAll({
+            where: {
+                alsoRecipe: false
+            }
+        });
         return res.json(ingredients)
     })
 )
@@ -54,18 +58,18 @@ router.patch(
 )
 
 // Get a all of a user's custom ingredients
-router.get(
-    '/user/:id(\\d+)',
-    asyncHandler(async (req, res) => {
-        const userId = parseInt(req.params.id, 10);
-        const ingredients = await Ingredient.findAll({
-            where: {
-                userId: userId
-            }
-        });
-        return res.json(ingredients)
-    })
-)
+// router.get(
+//     '/user/:id(\\d+)',
+//     asyncHandler(async (req, res) => {
+//         const userId = parseInt(req.params.id, 10);
+//         const ingredients = await Ingredient.findAll({
+//             where: {
+//                 userId: userId
+//             }
+//         });
+//         return res.json(ingredients)
+//     })
+// )
 
 // Create a new ingredient
 router.post(
