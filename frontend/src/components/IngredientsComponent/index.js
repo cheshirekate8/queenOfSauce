@@ -1,16 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as pantryActions from "../../store/pantry"
-import * as kitchenActions from "../../store/kitchen"
 import './Ingredients.css'
-import NewIngredientModal from "../NewIngredientModal";
 import AddToFridgeModal from "../AddToFridgeModal";
 
 function IngredientsComponent() {
     const dispatch = useDispatch()
     const sessionUser = useSelector((state) => state.session.user);
-    const ingredients = useSelector((state) => state.pantry.ingredients)
+    const ingredients = useSelector(state => state.pantry.ingredients)
+    const [searchTerm, setSearchTerm] = useState('')
 
     useEffect(() => {
         dispatch(pantryActions.getIngredients())
@@ -18,19 +17,24 @@ function IngredientsComponent() {
 
     if (!sessionUser) return <Redirect to="/" />;
 
-
     return (
         <div id='ingredientsDiv'>
             <h1 className='ingredientsTitle'>
                 Ingredients
-                {/* <NewIngredientModal /> */}
+                <input type='text' placeholder='Search' className='search-input' onChange={event => { setSearchTerm(event.target.value) }} />
             </h1>
             <div id='ingredientsListDiv'>
-                {ingredients && ingredients.map((ingredient) => (
+                {ingredients.filter((ingredient) => {
+                    if (searchTerm == '') {
+                        return ingredient
+                    } else if (ingredient.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                        return ingredient
+                    }
+                }).map((ingredient) => (
                     <div id={`${ingredient.name}Div`} className="ingredientDiv">
                         <h5>
                             {ingredient.name}
-                            <AddToFridgeModal currIngredient={ingredient}/>
+                            <AddToFridgeModal currIngredient={ingredient} />
                         </h5>
                         <img
                             src={ingredient.imgUrl}
