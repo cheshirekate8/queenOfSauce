@@ -16,12 +16,12 @@ function RecipesComponent() {
 
     if (!sessionUser) return <Redirect to="/" />;
 
-    let ingredients = [];
-    if (recipes) {
-        recipes?.forEach(recipe => {
-            ingredients.push(recipe.Ingredients)
-        })
-    }
+    // let ingredients = [];
+    // if (recipes) {
+    //     recipes?.forEach(recipe => {
+    //         ingredients.push(recipe.Ingredients)
+    //     })
+    // }
 
     return (
         <div id='recipesDiv'>
@@ -37,8 +37,8 @@ function RecipesComponent() {
                             <p className='reciP'>{recipe.desc}</p>
                             <div>
                                 <h5 className='recIngTitle'>Ingredients</h5>
-                                {ingredients && ingredients[i].map((ingredient, j) => (
-                                    <p className='reciP'>{ingredient.name}</p>
+                                {recipe.RecipeIngredients && recipe.RecipeIngredients.map((ingredient) => (
+                                    <p className='reciP'>{ingredient.Ingredient.name}</p>
                                 ))}
                             </div>
                             <CookModal recipe={recipe}/>

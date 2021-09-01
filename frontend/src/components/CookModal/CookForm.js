@@ -22,17 +22,17 @@ function CookForm({ setShowModal, recipe }) {
         let anotherTestArr = []
         // console.log(ingArray)
         // console.log(currFridge)
-        recipe.Ingredients.forEach(recIng => {
+        recipe.RecipeIngredients.forEach(recIng => {
             // console.log('RECIPE ING ===>', recIng)
             ingArray.forEach(refIng => {
                 // console.log('FRIDGE ING ===>', refIng)
-                if (recIng.id === refIng.Ingredient.id) {
+                if (recIng.Ingredient.id === refIng.Ingredient.id) {
                     testArr.push(true)
                 }
             })
         })
 
-        if (testArr.length === recipe.Ingredients.length) {
+        if (testArr.length === recipe.RecipeIngredients.length) {
             anotherTestArr.push('Can Cook')
             setShowCookButton(true)
             return true
@@ -49,11 +49,11 @@ function CookForm({ setShowModal, recipe }) {
         const ingArray = await dispatch(kitchenActions.getOneFridgesIngredients(currFridge))
         // console.log(ingArray)
         // console.log(currFridge)
-        recipe.Ingredients.forEach(recIng => {
+        recipe.RecipeIngredients.forEach(recIng => {
             // console.log('RECIPE ING ===>', recIng)
             ingArray.forEach(refIng => {
                 // console.log('FRIDGE ING ===>', refIng)
-                if (recIng.id === refIng.Ingredient.id) {
+                if (recIng.Ingredient.id === refIng.Ingredient.id) {
                     let newQuantity = refIng.quantity - 1
                     // console.log('NEW QUANTITY OF ', refIng.Ingredient.name, ' ', newQuantity)
                     // console.log(refIng)
