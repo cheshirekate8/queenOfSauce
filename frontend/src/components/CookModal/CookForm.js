@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as kitchenActions from "../../store/kitchen"
-import { cook } from "../../store/cookbook";
+import { recipeToIngredient } from "../../store/cookbook";
 import { useDispatch, useSelector } from "react-redux";
 
 function CookForm({ setShowModal, recipe }) {
@@ -26,7 +26,7 @@ function CookForm({ setShowModal, recipe }) {
             // console.log('RECIPE ING ===>', recIng)
             ingArray.forEach(refIng => {
                 // console.log('FRIDGE ING ===>', refIng)
-                if (recIng.Ingredient.id === refIng.Ingredient.id) {
+                if (recIng.Ingredient.id === refIng.Ingredient.id && refIng.quantity - recIng.quantity >= 0) {
                     testArr.push(true)
                 }
             })
@@ -47,26 +47,22 @@ function CookForm({ setShowModal, recipe }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const ingArray = await dispatch(kitchenActions.getOneFridgesIngredients(currFridge))
-        // console.log(ingArray)
-        // console.log(currFridge)
         recipe.RecipeIngredients.forEach(recIng => {
-            // console.log('RECIPE ING ===>', recIng)
             ingArray.forEach(refIng => {
-                // console.log('FRIDGE ING ===>', refIng)
                 if (recIng.Ingredient.id === refIng.Ingredient.id) {
-                    let newQuantity = refIng.quantity - 1
-                    // console.log('NEW QUANTITY OF ', refIng.Ingredient.name, ' ', newQuantity)
-                    // console.log(refIng)
+                    let newQuantity = refIng.quantity - recIng.quantity
                     if (newQuantity === 0) {
-                        dispatch(kitchenActions.deleteFromFridge(refIng.id))
+                        dispatch(kitchenActions.deleteFromFridge(refIng.id, sessionUser.id))
                     } else {
                         dispatch(kitchenActions.editQuantity(refIng.id, newQuantity, sessionUser.id))
-                        //edit the quantity
                     }
                 }
             })
         })
         //HERE WE ADD THE COOKED THING TO THE FRIDGE AS AN INGREDIENT. MUST REDO ALL THE SEEDS NOW.
+        const recipeToIng = await dispatch(recipeToIngredient(recipe.id))
+        // console.log(recipeToIng.id, recipeToIng.name, 'fridge id', currFridge)
+        dispatch(kitchenActions.addToFridge(recipeToIng.id, currFridge, 1, sessionUser.id))
         setShowModal(false)
     }
 

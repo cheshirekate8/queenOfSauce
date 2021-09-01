@@ -24,7 +24,11 @@ const validateIngredient = [
 router.get(
     '',
     asyncHandler(async (req, res) => {
-        const ingredients = await Ingredient.findAll();
+        const ingredients = await Ingredient.findAll({
+            where: {
+                alsoRecipe: false
+            }
+        });
         return res.json(ingredients)
     })
 )
