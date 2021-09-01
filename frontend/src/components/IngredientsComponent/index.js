@@ -24,7 +24,7 @@ function IngredientsComponent() {
                 <input type='text' placeholder='Search' className='search-input' onChange={event => { setSearchTerm(event.target.value) }} />
             </h1>
             <div id='ingredientsListDiv'>
-                {ingredients.filter((ingredient) => {
+                {ingredients?.filter((ingredient) => {
                     if (searchTerm == '') {
                         return ingredient
                     } else if (ingredient.name.toLowerCase().includes(searchTerm.toLowerCase())) {
