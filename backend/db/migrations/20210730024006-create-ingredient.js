@@ -10,19 +10,22 @@ module.exports = {
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING(30)
+        type: Sequelize.STRING
       },
       imgUrl: {
         allowNull: false,
-        type: Sequelize.STRING(500)
+        type: Sequelize.STRING
       },
       desc: {
         allowNull: false,
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING
       },
-      userId: {
-        type: Sequelize.INTEGER,
-        references: { model: 'Users' }
+      type: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      alsoRecipe: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,

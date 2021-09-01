@@ -12,32 +12,26 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Ingredient.hasMany(models.FridgeIngredients, {foreignKey: 'ingredientId'})
       Ingredient.belongsToMany(models.Recipe, { through: models.RecipeIngredients, otherKey: 'recipeId', foreignKey: 'ingredientId'})
-      Ingredient.belongsTo(models.User, { foreignKey: 'userId'})
     }
   };
   Ingredient.init({
     name: {
-      type: DataTypes.STRING(30),
-      allowNull: false,
-      validate: {
-        len: [3, 30]
-      }
+      type: DataTypes.STRING,
+      allowNull: false
     },
     imgUrl: {
-      type: DataTypes.STRING(500),
-      allowNull: false,
-      validate: {
-        len: [1, 500]
-      }
+      type: DataTypes.STRING,
+      allowNull: false
     },
     desc: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
-      validate: {
-        len: [3, 100]
-      }
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    userId: DataTypes.INTEGER
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    alsoRecipe: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Ingredient',

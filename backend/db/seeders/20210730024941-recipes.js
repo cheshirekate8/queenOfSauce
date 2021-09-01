@@ -4,7 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
 
      await queryInterface.bulkInsert('Recipes', [
-       {
+      {
        name: "Fried Egg",
        imgUrl: "https://stardewvalleywiki.com/mediawiki/images/1/18/Fried_Egg.png",
        desc: "Sunny-side up."
