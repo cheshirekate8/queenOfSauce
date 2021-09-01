@@ -15,6 +15,11 @@ function CookForm({ setShowModal, recipe }) {
     //     checkIf(currFridge, recipe)
     // }, dispatch)
 
+    // if (fridges.length === 1) {
+    //     // setCurrFridge(fridges[0].id)
+    //     console.log(fridges[0])
+    // }
+
 
     const checkIf = async (fridgeId, recipe) => {
         const ingArray = await dispatch(kitchenActions.getOneFridgesIngredients(fridgeId))
@@ -79,7 +84,7 @@ function CookForm({ setShowModal, recipe }) {
                             <li key={idx}>{error}</li>
                         ))}
                     </ul>}
-                {fridges.length > 1 && (
+                {fridges && (
                     <label className='modalLabels'>
                         Which Fridge?
                         <select
