@@ -23,7 +23,7 @@ function IngredientsComponent() {
         <div id='ingredientsDiv'>
             <h1 className='ingredientsTitle'>
                 Ingredients
-                <NewIngredientModal />
+                {/* <NewIngredientModal /> */}
             </h1>
             <div id='ingredientsListDiv'>
                 {ingredients && ingredients.map((ingredient) => (

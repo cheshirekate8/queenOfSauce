@@ -1,6 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
-const { Recipe, Ingredient } = require("../../db/models");
+const { Recipe, Ingredient, RecipeIngredients } = require("../../db/models");
 const router = express.Router();
 
 
@@ -9,7 +9,12 @@ router.get(
     '/',
     asyncHandler(async (req, res) => {
         const recipe = await Recipe.findAll({
-            include: Ingredient
+            include: {
+                model: RecipeIngredients,
+                include: {
+                    model: Ingredient
+                }
+            }
         });
         return res.json(recipe)
     })
@@ -21,7 +26,12 @@ router.get(
     asyncHandler(async (req, res) => {
         const recipeId = parseInt(req.params.id, 10);
         const recipe = await Recipe.findByPk(recipeId, {
-            include: Ingredient
+            include: {
+                model: RecipeIngredients,
+                include: {
+                    model: Ingredient
+                }
+            }
         });
         return res.json(recipe)
     })

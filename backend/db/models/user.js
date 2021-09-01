@@ -39,8 +39,6 @@ module.exports = (sequelize, DataTypes) => {
     };
     static associate(models) {
       User.hasMany(models.Fridge, { foreignKey: 'userId'})
-      User.hasMany(models.Recipe, { foreignKey: 'userId'})
-      User.hasMany(models.Ingredient, { foreignKey: 'userId'})
     }
   };
   User.init(

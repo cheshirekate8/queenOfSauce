@@ -32,7 +32,7 @@ function KitchenComponent() {
     return (
         <>
             <MyFridgesComponent />
-            <MyIngredientsComponent />
+            {/* <MyIngredientsComponent /> */}
         </>
     );
 }

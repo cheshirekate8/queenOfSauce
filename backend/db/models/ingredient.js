@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Ingredient.hasMany(models.FridgeIngredients, {foreignKey: 'ingredientId'})
-      Ingredient.belongsToMany(models.Recipe, { through: models.RecipeIngredients, otherKey: 'recipeId', foreignKey: 'ingredientId'})
+      Ingredient.hasMany(models.RecipeIngredients, {foreignKey: 'ingredientId'})
     }
   };
   Ingredient.init({
