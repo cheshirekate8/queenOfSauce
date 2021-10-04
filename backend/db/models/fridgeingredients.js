@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      FridgeIngredients.belongsTo(models.Fridge, { foreignKey: 'fridgeId'})
-      FridgeIngredients.belongsTo(models.Ingredient, { foreignKey: 'ingredientId'})
+      FridgeIngredients.belongsTo(models.Fridge, { foreignKey: 'fridgeId' })
+      FridgeIngredients.belongsTo(models.Ingredient, { foreignKey: 'ingredientId' })
     }
   };
   FridgeIngredients.init({
@@ -20,10 +20,13 @@ module.exports = (sequelize, DataTypes) => {
     quantity: {
       type: DataTypes.INTEGER,
       allowNull: false,
-        validate: {
-          min: 1,
-          max: 999
-        }
+      validate: {
+        min: 1,
+        max: {
+          args: [[999]],
+          msg: "Your fridge must have less than 999 of a single ingredient."
+        },
+      },
     }
   }, {
     sequelize,
