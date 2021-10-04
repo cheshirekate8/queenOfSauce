@@ -11,15 +11,6 @@ function CookForm({ setShowModal, recipe }) {
     const [showCookButton, setShowCookButton] = useState(false)
     const [errors, setErrors] = useState([]);
 
-    // useEffect(() => {
-    //     checkIf(currFridge, recipe)
-    // }, dispatch)
-
-    // if (fridges.length === 1) {
-    //     // setCurrFridge(fridges[0].id)
-    //     console.log(fridges[0])
-    // }
-
 
     const checkIf = async (fridgeId, recipe) => {
         const ingArray = await dispatch(kitchenActions.getOneFridgesIngredients(fridgeId))
@@ -74,40 +65,50 @@ function CookForm({ setShowModal, recipe }) {
     let checker = async () => await checkIf(currFridge, recipe)
     checker();
 
-    return (
-        <>
-            <h1 className='modalTitle'> Cook {recipe.name}?</h1>
-            <form onSubmit={handleSubmit} className='modalForm'>
-                {errors.length > 0 &&
-                    <ul>
-                        {errors.map((error, idx) => (
-                            <li key={idx}>{error}</li>
-                        ))}
-                    </ul>}
-                {fridges && (
-                    <label className='modalLabels'>
-                        Which Fridge?
-                        <select
-                            onChange={(e) => setCurrFridge(e.target.value)}
-                        >
-                            <option value="" disabled selected>Select your option</option>
-                            {fridges.map(fridge => (
-                                <option
-                                    value={fridge.id}
-                                >{fridge.name}
-                                </option>
-                            ))}
-                        </select>
-                    </label>
-                )}
-                {showCookButton ?
-                (<button type="submit" className='modalBtns'>Cook!</button>)
-                :
-                (<div><br/>Please select a fridge with all the proper ingredients!</div>)}
+    if (fridges.length) {
 
-            </form>
-        </>
-    );
+        return (
+            <>
+                <h1 className='modalTitle'> Cook {recipe.name}?</h1>
+                <form onSubmit={handleSubmit} className='modalForm'>
+                    {errors.length > 0 &&
+                        <ul>
+                            {errors.map((error, idx) => (
+                                <li key={idx}>{error}</li>
+                            ))}
+                        </ul>}
+                    {fridges && (
+                        <label className='modalLabels'>
+                            Which Fridge?
+                            <select
+                                onChange={(e) => setCurrFridge(e.target.value)}
+                            >
+                                <option value="" disabled selected>Select your option</option>
+                                {fridges.map(fridge => (
+                                    <option
+                                        value={fridge.id}
+                                    >{fridge.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                    )}
+                    {showCookButton ?
+                        (<button type="submit" className='modalBtns'>Cook!</button>)
+                        :
+                        (<div><br />Please select a fridge with all the proper ingredients!</div>)}
+
+                </form>
+            </>
+        );
+    } else {
+        return (
+            <>
+                <h1 className='modalTitle'> Cook {recipe.name}?</h1>
+                <div>You have no Fridges! Please create one!</div>
+            </>
+        )
+    }
 }
 
 export default CookForm;

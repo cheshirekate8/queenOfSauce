@@ -7,7 +7,7 @@ function AddToFridgeForm({ setShowModal, currIngredient }) {
     const sessionUser = useSelector((state) => state.session.user);
     const fridges = useSelector((state) => state.kitchen.fridges);
     const [quantity, setQuantity] = useState(1);
-    const [currFridgeId, setCurrFridgeId] = useState(fridges[0].id)
+    const [currFridgeId, setCurrFridgeId] = useState(fridges[0]?.id)
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
@@ -23,42 +23,51 @@ function AddToFridgeForm({ setShowModal, currIngredient }) {
             });
     };
 
-    return (
-        <>
-            <h1 className='modalTitle'>Add {currIngredient.name} to your Fridge</h1>
-            <form onSubmit={handleSubmit} className='modalForm'>
-                {errors.length > 0 &&
-                    <ul>
-                        {errors.map((error, idx) => (
-                            <li key={idx}>{error}</li>
-                        ))}
-                    </ul>}
-                {fridges.length > 1 && (
-                    <label className='modalLabels'>
-                        Fridge
-                        <select
-                        onChange={(e) => setCurrFridgeId(e.target.value)}>
-                            {fridges.map(fridge => (
-                                <option
-                                    value={fridge.id}
-                                >{fridge.name}
-                                </option>
+    if (fridges.length) {
+        return (
+            <>
+                <h1 className='modalTitle'>Add {currIngredient.name} to your Fridge</h1>
+                <form onSubmit={handleSubmit} className='modalForm'>
+                    {errors.length > 0 &&
+                        <ul>
+                            {errors.map((error, idx) => (
+                                <li key={idx}>{error}</li>
                             ))}
-                        </select>
+                        </ul>}
+                    {fridges.length > 1 && (
+                        <label className='modalLabels'>
+                            Fridge
+                            <select
+                                onChange={(e) => setCurrFridgeId(e.target.value)}>
+                                {fridges.map(fridge => (
+                                    <option
+                                        value={fridge.id}
+                                    >{fridge.name}
+                                    </option>
+                                ))}
+                            </select>
+                        </label>
+                    )}
+                    <label className='modalLabels'>
+                        Quantity
+                        <input
+                            type="integer"
+                            value={quantity}
+                            onChange={(e) => setQuantity(e.target.value)}
+                        />
                     </label>
-                )}
-                <label className='modalLabels'>
-                    Quantity
-                    <input
-                        type="integer"
-                        value={quantity}
-                        onChange={(e) => setQuantity(e.target.value)}
-                    />
-                </label>
-                <button type="submit" className='modalBtns'>Add To Fridge</button>
-            </form>
-        </>
-    );
+                    <button type="submit" className='modalBtns'>Add To Fridge</button>
+                </form>
+            </>
+        );
+    } else {
+        return (
+            <>
+                <h1 className='modalTitle'>Add {currIngredient.name} to your Fridge</h1>
+                <div>You have no Fridges! Please create one!</div>
+            </>
+        )
+    }
 }
 
 export default AddToFridgeForm;
