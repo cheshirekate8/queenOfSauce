@@ -3,7 +3,7 @@ module.exports = {
      await queryInterface.bulkInsert('RecipeIngredients', [
       {
         recipeId: 1,
-        ingredientId: 44,
+        ingredientId: 42,
         quantity: 1
       },
       {
