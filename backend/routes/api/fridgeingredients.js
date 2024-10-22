@@ -41,11 +41,6 @@ router.post(
       const newQuantity = (checker[0].quantity += Number(quantity));
       await checker[0].update({ quantity: newQuantity });
       return res.json(checker);
-      // checker_ = Number(checker[0].quantity)
-      // quantity = Number(quantity)
-      // const newQuantity = checker_ += quantity
-      // await checker[0].update({ quantity: newQuantity })
-      // return res.json(checker)
     }
   }),
 );
