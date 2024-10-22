@@ -30,7 +30,9 @@ body {
   color: white;
   font-family: "SVThin";
   font-size: 18px;
-  text-shadow: black 1px 1px, black 1px 1px 3px;
+  text-shadow:
+    black 1px 1px,
+    black 1px 1px 3px;
   height: 100vh;
   margin: 0;
 }
@@ -87,7 +89,9 @@ li {
   text-decoration: none;
   font-size: 1em;
   padding: 5px;
-  text-shadow: black 1px 1px, black 1px 1px 3px;
+  text-shadow:
+    black 1px 1px,
+    black 1px 1px 3px;
   background: none;
   border: none;
   cursor: pointer;

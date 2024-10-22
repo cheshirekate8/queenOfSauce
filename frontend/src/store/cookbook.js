@@ -1,20 +1,20 @@
 import { csrfFetch } from "./csrf.js";
 
-const GET_RECIPES = '/recipes';
-const CONVERT = '/convert';
+const GET_RECIPES = "/recipes";
+const CONVERT = "/convert";
 
 const getRec = (list) => ({
   type: GET_RECIPES,
-  list
+  list,
 });
 
 const convert = (payload) => ({
   type: CONVERT,
-  payload
+  payload,
 });
 
 export const getRecipes = () => async (dispatch) => {
-  const response = await csrfFetch('/api/recipes');
+  const response = await csrfFetch("/api/recipes");
   if (response.ok) {
     const recipes = await response.json();
     dispatch(getRec(recipes));
@@ -37,12 +37,12 @@ function reducer(state = initialState, action) {
     case GET_RECIPES:
       return {
         ...state,
-        recipes: action.list
+        recipes: action.list,
       };
     case CONVERT:
       return {
         ...state,
-        currRecipe: action.payload
+        currRecipe: action.payload,
       };
     default:
       return state;

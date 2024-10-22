@@ -1,38 +1,38 @@
-'use strict';
+"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('FridgeIngredients', {
+    await queryInterface.createTable("FridgeIngredients", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       fridgeId: {
         type: Sequelize.INTEGER,
-        references: { model: 'Fridges' }
+        references: { model: "Fridges" },
       },
       ingredientId: {
         type: Sequelize.INTEGER,
-        references: { model: 'Ingredients' }
+        references: { model: "Ingredients" },
       },
       quantity: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn("now")
+        defaultValue: Sequelize.fn("now"),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn("now")
-      }
+        defaultValue: Sequelize.fn("now"),
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('FridgeIngredients');
-  }
+    await queryInterface.dropTable("FridgeIngredients");
+  },
 };

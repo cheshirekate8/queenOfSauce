@@ -2,7 +2,7 @@
   position: absolute;
   right: 30px;
   top: 25px;
-  font-family: 'SVThin';
+  font-family: "SVThin";
   font-size: 20px;
   background: linear-gradient(
     180deg,
@@ -17,7 +17,7 @@
 nav {
   display: flex;
   justify-content: space-between;
-  font-family: 'SVFont';
+  font-family: "SVFont";
   align-items: center;
 }
 
@@ -29,12 +29,14 @@ nav {
 .navLinks,
 .logBtns {
   cursor: pointer;
-  font-family: 'SVThin';
+  font-family: "SVThin";
   color: white;
   text-decoration: none;
   font-size: 1.25em;
   padding: 5px;
-  text-shadow: black 1px 1px, black 1px 1px 3px;
+  text-shadow:
+    black 1px 1px,
+    black 1px 1px 3px;
 }
 
 .navLinks:hover,

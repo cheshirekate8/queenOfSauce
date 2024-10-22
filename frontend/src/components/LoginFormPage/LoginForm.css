@@ -1,36 +1,36 @@
 #loginDiv {
-    height: 75vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #loginForm {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .loginLabels {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
 }
 
 #demoBtn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: 'SVThin';
-    color: white;
-    text-decoration: none;
-    padding: 5px;
-    text-shadow: black 1px 1px, black 1px 1px 3px;
-
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "SVThin";
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+  text-shadow:
+    black 1px 1px,
+    black 1px 1px 3px;
 }
 
-
 #demoBtn:hover {
-    text-decoration: underline;
-  }
+  text-decoration: underline;
+}

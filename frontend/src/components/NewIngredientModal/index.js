@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Modal } from '../../context/Modal';
-import NewIngredientForm from './NewIngredientForm';
+import React, { useState } from "react";
+import { Modal } from "../../context/Modal";
+import NewIngredientForm from "./NewIngredientForm";
 
 function NewIngredientModal() {
   const [showModal, setShowModal] = useState(false);

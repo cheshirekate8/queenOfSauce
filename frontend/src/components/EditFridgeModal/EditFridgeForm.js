@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as kitchenActions from "../../store/kitchen"
+import * as kitchenActions from "../../store/kitchen";
 import { useDispatch } from "react-redux";
 
 function EditFridgeForm({ currFridge, setShowModal }) {
@@ -12,7 +12,7 @@ function EditFridgeForm({ currFridge, setShowModal }) {
     setErrors([]);
     dispatch(kitchenActions.editFridge(currFridge.id, name))
       .then(() => {
-        setShowModal(false)
+        setShowModal(false);
       })
       .catch(async (res) => {
         const data = await res.json();
@@ -22,15 +22,16 @@ function EditFridgeForm({ currFridge, setShowModal }) {
 
   return (
     <>
-      <h1 className='modalTitle'>Edit Fridge</h1>
-      <form onSubmit={handleSubmit} className='modalForm'>
-        {errors.length > 0 &&
+      <h1 className="modalTitle">Edit Fridge</h1>
+      <form onSubmit={handleSubmit} className="modalForm">
+        {errors.length > 0 && (
           <ul>
             {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
             ))}
-          </ul>}
-        <label className='modalLabels'>
+          </ul>
+        )}
+        <label className="modalLabels">
           Name
           <input
             type="text"
@@ -38,7 +39,9 @@ function EditFridgeForm({ currFridge, setShowModal }) {
             onChange={(e) => setName(e.target.value)}
           />
         </label>
-      <button type="submit" className="modalBtns">Edit Fridge</button>
+        <button type="submit" className="modalBtns">
+          Edit Fridge
+        </button>
       </form>
     </>
   );

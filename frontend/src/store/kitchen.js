@@ -107,7 +107,7 @@ export const deleteFromFridge =
       `/api/fridgeingredients/${fridgeIngredientId}`,
       {
         method: "DELETE",
-      }
+      },
     );
     const data = await response.json();
     console.log(data);
